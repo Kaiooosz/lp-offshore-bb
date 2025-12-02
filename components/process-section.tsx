@@ -9,7 +9,7 @@ const contactMethods = [
   {
     icon: Calendar,
     title: "Agende uma Consulta",
-    description: "Reunião online ou presencial com nossos especialistas",
+    description: "Online com especialistas",
     action: "Agendar",
     href: "#contato",
   },
@@ -23,9 +23,9 @@ const contactMethods = [
   {
     icon: Mail,
     title: "Envie um e-mail",
-    description: "contato@offshore.com.br",
+    description: "contato@BezzeraBorges.com",
     action: "Enviar",
-    href: "mailto:contato@offshore.com.br",
+    href: "mailto:contato@BezzeraBorges.com",
   },
   {
     icon: MessageCircle,

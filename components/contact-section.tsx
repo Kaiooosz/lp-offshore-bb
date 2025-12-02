@@ -55,7 +55,7 @@ export function ContactSection() {
                 </div>
                 <div className="p-4 bg-primary-foreground/5 rounded-lg border border-primary-foreground/10">
                   <p className="font-semibold mb-1">Valor</p>
-                  <p className="text-primary-foreground/60">Gratuito</p>
+                  <p className="text-primary-foreground/60">$100,00</p>
                 </div>
               </div>
             </div>

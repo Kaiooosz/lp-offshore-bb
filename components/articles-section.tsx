@@ -48,7 +48,7 @@ export function ArticlesSection() {
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {articles.map((article, index) => (
             <ScrollAnimation key={index} delay={index * 150}>
-              <Link href="#" className="group block h-full">
+              <Link href="https://www.bezerraborges.com.br/artigos" target="_blank" rel="noopener noreferrer" className="group block h-full">
                 <article className="bg-muted/30 rounded-xl overflow-hidden border border-border hover:border-titanium/50 transition-all duration-300 hover:shadow-lg h-full flex flex-col">
                   <div className="relative overflow-hidden">
                     <img
@@ -82,7 +82,9 @@ export function ArticlesSection() {
 
         <ScrollAnimation className="text-center mt-12">
           <Link
-            href="#"
+            href="https://www.bezerraborges.com.br/artigos"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-titanium hover:text-foreground font-medium transition-colors"
           >
             Ver todos os artigos
@@ -93,3 +95,4 @@ export function ArticlesSection() {
     </section>
   )
 }
+

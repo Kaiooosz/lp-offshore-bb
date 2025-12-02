@@ -24,7 +24,7 @@ const footerLinks = {
     { label: "Sobre nós", href: "#equipe" },
     { label: "Equipe", href: "#equipe" },
     { label: "Contato", href: "#contato" },
-    { label: "Site Principal", href: "https://escritorio.com.br", external: true },
+    { label: "", href: "https://www.bezerraborges.com.br", external: true },
   ],
 }
 
