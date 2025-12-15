@@ -45,7 +45,7 @@ export function ObjectionsSection() {
             <ScrollAnimation key={index} delay={index * 100}>
               <div className="bg-background rounded-xl p-6 border border-border hover:border-titanium/50 transition-all duration-300 hover:shadow-lg group">
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0">
+                  <div className="shrink-0">
                     <div className="w-12 h-12 rounded-full bg-destructive/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                       <X className="h-6 w-6 text-destructive" />
                     </div>
@@ -57,7 +57,7 @@ export function ObjectionsSection() {
                   </div>
                 </div>
                 <div className="flex items-start gap-4 mt-4 pt-4 border-t border-border">
-                  <div className="flex-shrink-0">
+                  <div className="shrink-0">
                     <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Check className="h-6 w-6 text-green-600" />
                     </div>
