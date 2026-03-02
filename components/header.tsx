@@ -11,7 +11,7 @@ const navLinks = [
   { href: "#equipe", label: "Equipe" },
   { href: "#depoimentos", label: "Depoimentos" },
   { href: "#artigos", label: "Artigos" },
-  { href: "#contato", label: "Contato" },
+  { href: "https://wa.me/5511943665367?text=Estou%20interessado%20em%20saber%20mais%20sobre%20Proteja%20seu%20patrim%C3%B4nio.%20Expanda%20globalmente.", label: "Contato" },
 ]
 
 export function Header() {
@@ -28,9 +28,8 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border" : "bg-transparent"
+        }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -41,13 +40,13 @@ export function Header() {
             </div>
             <span className="font-serif text-xl font-semibold tracking-tight text-foreground">Offshore</span> 
           </Link> */}
-  <Link href="/" className="flex items-center">
-  <img 
-    src="/Logofundopreto.png" 
-    alt="Offshore Logo" 
-    className="h-22 w-auto object-contain"
-  />
-</Link>
+          <Link href="/" className="flex items-center">
+            <img
+              src="/Logofundopreto.png"
+              alt="Offshore Logo"
+              className="h-22 w-auto object-contain"
+            />
+          </Link>
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
@@ -64,7 +63,7 @@ export function Header() {
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link href="#contato">Agendar Consulta</Link>
+              <Link href="https://wa.me/5511943665367?text=Estou%20interessado%20em%20saber%20mais%20sobre%20Proteja%20seu%20patrim%C3%B4nio.%20Expanda%20globalmente." target="_blank">Agendar Consulta</Link>
             </Button>
           </div>
 
@@ -94,7 +93,7 @@ export function Header() {
               ))}
               <div className="px-4 pt-4 border-t border-border">
                 <Button asChild className="w-full bg-primary text-primary-foreground">
-                  <Link href="#contato">Agendar Consulta</Link>
+                  <Link href="https://wa.me/5511943665367?text=Estou%20interessado%20em%20saber%20mais%20sobre%20Proteja%20seu%20patrim%C3%B4nio.%20Expanda%20globalmente." target="_blank">Agendar Consulta</Link>
                 </Button>
               </div>
             </nav>

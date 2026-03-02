@@ -20,8 +20,10 @@ export function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log(formData)
+    const baseMessage = "Estou interessado em saber mais sobre Proteja seu patrimônio. Expanda globalmente."
+    const formInfo = `\n\nNome: ${formData.name}\nEmail: ${formData.email}\nTelefone: ${formData.phone}\nPatrimônio: ${formData.patrimony}\nMensagem: ${formData.message}`
+    const fullMessage = encodeURIComponent(baseMessage + formInfo)
+    window.open(`https://wa.me/5511943665367?text=${fullMessage}`, "_blank")
   }
 
   return (
@@ -32,7 +34,7 @@ export function ContactSection() {
           <ScrollAnimation animation="slide-left">
             <span className="text-sm font-medium text-titanium-light uppercase tracking-wider">Contato</span>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-6 text-balance">
-              Agende sua consulta gratuita
+              Agende sua consulta!
             </h2>
             <p className="text-lg text-primary-foreground/70 mb-8 leading-relaxed text-pretty">
               Dê o primeiro passo para a internacionalização do seu patrimônio. Nossa equipe entrará em contato em até

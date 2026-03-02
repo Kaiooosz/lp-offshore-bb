@@ -23,7 +23,7 @@ const footerLinks = {
   empresa: [
     { label: "Sobre nós", href: "#equipe" },
     { label: "Equipe", href: "#equipe" },
-    { label: "Contato", href: "#contato" },
+    { label: "Contato", href: "https://wa.me/5511943665367?text=Estou%20interessado%20em%20saber%20mais%20sobre%20Proteja%20seu%20patrim%C3%B4nio.%20Expanda%20globalmente.", external: true },
     { label: "", href: "https://www.bezerraborges.com.br", external: true },
   ],
 }
@@ -35,13 +35,13 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-          <Link href="/" className="flex items-center">
-  <img 
-    src="/Logofundopreto.png" 
-    alt="Offshore Logo" 
-    className="h-22 w-auto object-contain"
-  />
-</Link>
+            <Link href="/" className="flex items-center">
+              <img
+                src="/Logofundopreto.png"
+                alt="Offshore Logo"
+                className="h-22 w-auto object-contain"
+              />
+            </Link>
             <p className="text-primary-foreground/60 leading-relaxed mb-6 max-w-sm">
               Especialistas em estruturação offshore para proteção patrimonial e expansão internacional do seu negócio.
             </p>

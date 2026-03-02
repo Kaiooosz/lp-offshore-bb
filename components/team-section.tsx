@@ -19,20 +19,6 @@ const team = [
     image: "/mariana.jpg",
     linkedin: "#",
   },
-  {
-    name: "Dr. Lucas",
-    role: "Especialista",
-    specialty: "Estruturação Societária",
-    image: "/Lucas.jpg",
-    linkedin: "#",
-  },
-  {
-    name: "Dra. victoria",
-    role: "Especialista",
-    specialty: "Compliance Internacional",
-    image: "/victoria.jpg",
-    linkedin: "#",
-  },
 ]
 
 export function TeamSection() {

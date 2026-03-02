@@ -32,7 +32,7 @@ const contactMethods = [
     title: "WhatsApp",
     description: "Atendimento rápido e direto",
     action: "Conversar",
-    href: "https://wa.me/5511943665367",
+    href: "https://wa.me/5511943665367?text=Estou%20interessado%20em%20saber%20mais%20sobre%20Proteja%20seu%20patrim%C3%B4nio.%20Expanda%20globalmente.",
   },
 ]
 
@@ -53,7 +53,7 @@ export function ProcessSection() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Button asChild size="lg" className="bg-primary text-primary-foreground">
-                <Link href="#contato">Agendar Consulta Gratuita</Link>
+                <Link href="https://wa.me/5511943665367?text=Estou%20interessado%20em%20saber%20mais%20sobre%20Proteja%20seu%20patrim%C3%B4nio.%20Expanda%20globalmente." target="_blank">Agendar Consulta Gratuita</Link>
               </Button>
               <Button asChild variant="outline" size="lg">
                 <Link href="https://escritorio.com.br" target="_blank">
