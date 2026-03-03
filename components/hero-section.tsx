@@ -68,7 +68,7 @@ export function HeroSection() {
               size="lg"
               className="bg-background text-foreground hover:bg-background/90 text-base px-8 py-6"
             >
-              <Link href="https://wa.me/5511943665367?text=Estou%20interessado%20em%20saber%20mais%20sobre%20Proteja%20seu%20patrim%C3%B4nio.%20Expanda%20globalmente." target="_blank">
+              <Link href="https://api.whatsapp.com/send/?phone=5511982712025&text=Ol%C3%A1%2C+gostaria+de+agendar+um+diagn%C3%B3stico+estrat%C3%A9gico+com+a+Bezerra+Borges+Advogados" target="_blank">
                 Agendar Consulta Gratuita
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>

@@ -11,7 +11,7 @@ const navLinks = [
   { href: "#equipe", label: "Equipe" },
   { href: "#depoimentos", label: "Depoimentos" },
   { href: "#artigos", label: "Artigos" },
-  { href: "https://wa.me/5511943665367?text=Estou%20interessado%20em%20saber%20mais%20sobre%20Proteja%20seu%20patrim%C3%B4nio.%20Expanda%20globalmente.", label: "Contato" },
+  { href: "https://api.whatsapp.com/send/?phone=5511982712025&text=Ol%C3%A1%2C+gostaria+de+agendar+um+diagn%C3%B3stico+estrat%C3%A9gico+com+a+Bezerra+Borges+Advogados", label: "Contato" },
 ]
 
 export function Header() {
@@ -63,7 +63,7 @@ export function Header() {
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link href="https://wa.me/5511943665367?text=Estou%20interessado%20em%20saber%20mais%20sobre%20Proteja%20seu%20patrim%C3%B4nio.%20Expanda%20globalmente." target="_blank">Agendar Consulta</Link>
+              <Link href="https://api.whatsapp.com/send/?phone=5511982712025&text=Ol%C3%A1%2C+gostaria+de+agendar+um+diagn%C3%B3stico+estrat%C3%A9gico+com+a+Bezerra+Borges+Advogados" target="_blank">Agendar Consulta</Link>
             </Button>
           </div>
 
@@ -93,7 +93,7 @@ export function Header() {
               ))}
               <div className="px-4 pt-4 border-t border-border">
                 <Button asChild className="w-full bg-primary text-primary-foreground">
-                  <Link href="https://wa.me/5511943665367?text=Estou%20interessado%20em%20saber%20mais%20sobre%20Proteja%20seu%20patrim%C3%B4nio.%20Expanda%20globalmente." target="_blank">Agendar Consulta</Link>
+                  <Link href="https://api.whatsapp.com/send/?phone=5511982712025&text=Ol%C3%A1%2C+gostaria+de+agendar+um+diagn%C3%B3stico+estrat%C3%A9gico+com+a+Bezerra+Borges+Advogados" target="_blank">Agendar Consulta</Link>
                 </Button>
               </div>
             </nav>

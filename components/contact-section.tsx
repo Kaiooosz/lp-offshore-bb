@@ -20,10 +20,10 @@ export function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const baseMessage = "Estou interessado em saber mais sobre Proteja seu patrimônio. Expanda globalmente."
+    const baseMessage = "Olá, gostaria de agendar um diagnóstico estratégico com a Bezerra Borges Advogados"
     const formInfo = `\n\nNome: ${formData.name}\nEmail: ${formData.email}\nTelefone: ${formData.phone}\nPatrimônio: ${formData.patrimony}\nMensagem: ${formData.message}`
     const fullMessage = encodeURIComponent(baseMessage + formInfo)
-    window.open(`https://wa.me/5511943665367?text=${fullMessage}`, "_blank")
+    window.open(`https://api.whatsapp.com/send/?phone=5511982712025&text=${fullMessage}`, "_blank")
   }
 
   return (

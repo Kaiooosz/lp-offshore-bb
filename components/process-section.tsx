@@ -32,7 +32,7 @@ const contactMethods = [
     title: "WhatsApp",
     description: "Atendimento rápido e direto",
     action: "Conversar",
-    href: "https://wa.me/5511943665367?text=Estou%20interessado%20em%20saber%20mais%20sobre%20Proteja%20seu%20patrim%C3%B4nio.%20Expanda%20globalmente.",
+    href: "https://api.whatsapp.com/send/?phone=5511982712025&text=Ol%C3%A1%2C+gostaria+de+agendar+um+diagn%C3%B3stico+estrat%C3%A9gico+com+a+Bezerra+Borges+Advogados",
   },
 ]
 
@@ -53,7 +53,7 @@ export function ProcessSection() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Button asChild size="lg" className="bg-primary text-primary-foreground">
-                <Link href="https://wa.me/5511943665367?text=Estou%20interessado%20em%20saber%20mais%20sobre%20Proteja%20seu%20patrim%C3%B4nio.%20Expanda%20globalmente." target="_blank">Agendar Consulta Gratuita</Link>
+                <Link href="https://api.whatsapp.com/send/?phone=5511982712025&text=Ol%C3%A1%2C+gostaria+de+agendar+um+diagn%C3%B3stico+estrat%C3%A9gico+com+a+Bezerra+Borges+Advogados" target="_blank">Agendar Consulta Gratuita</Link>
               </Button>
               <Button asChild variant="outline" size="lg">
                 <Link href="https://escritorio.com.br" target="_blank">
