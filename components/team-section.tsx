@@ -85,66 +85,83 @@ const team = [
 ]
 
 export function TeamSection() {
+  const allMembers = [...team, ...team] // Duplicar para o efeito infinito
+
   return (
-    <section className="py-24 bg-background" id="equipe">
-      <div className="container mx-auto px-4 lg:px-8">
-        <ScrollAnimation className="text-center mb-16">
-          <span className="text-sm font-medium text-titanium uppercase tracking-wider">Nossa Equipe</span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-4 text-balance">
+    <section className="py-24 bg-background overflow-hidden" id="equipe">
+      <div className="container mx-auto px-4 lg:px-8 mb-16 text-center">
+        <ScrollAnimation>
+          <span className="text-sm font-medium text-titanium uppercase tracking-widest px-4 py-1.5 bg-muted rounded-full">Nossa Equipe</span>
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mt-6 mb-6">
             Especialistas dedicados ao seu sucesso
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Profissionais com vasta experiência em estruturação internacional e planejamento patrimonial.
           </p>
         </ScrollAnimation>
+      </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
-          {team.map((member, index) => (
-            <ScrollAnimation key={index} delay={index * 100}>
-              <div className="group text-center">
-                <div className="relative mb-6 overflow-hidden rounded-xl">
+      {/* Esteira de Colaboradores */}
+      <div className="relative flex overflow-hidden group">
+        <div className="flex animate-infinite-scroll whitespace-nowrap py-10">
+          {allMembers.map((member, index) => (
+            <div key={index} className="flex-none w-[280px] md:w-[350px] px-4">
+              <div className="group/card bg-muted/30 rounded-2xl overflow-hidden border border-border hover:border-titanium/30 transition-all duration-500 hover:shadow-2xl">
+                <div className="relative aspect-[3/4] overflow-hidden">
                   <img
                     src={member.image || "/placeholder.svg"}
                     alt={member.name}
-                    className="w-full aspect-square object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    className="w-full h-full object-cover grayscale brightness-90 group-hover/card:grayscale-0 group-hover/card:scale-105 group-hover/card:brightness-105 transition-all duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors" />
-                  <Link
-                    href={member.linkedin}
-                    className="absolute bottom-4 right-4 w-10 h-10 bg-background rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"
-                  >
-                    <Linkedin className="h-5 w-5 text-foreground" />
-                  </Link>
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500">
+                    <Link
+                      href={member.linkedin}
+                      className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+                    >
+                      <Linkedin className="h-5 w-5 text-black" />
+                    </Link>
+                  </div>
                 </div>
-                <h3 className="font-semibold text-lg text-foreground mb-1">{member.name}</h3>
-                <p className="text-titanium font-medium text-sm mb-1">{member.role}</p>
-                <p className="text-muted-foreground text-sm">{member.specialty}</p>
+                <div className="p-8 text-center bg-background/80 backdrop-blur-sm border-t border-border">
+                  <h3 className="font-serif text-2xl font-bold text-foreground mb-2 tracking-tight">{member.name}</h3>
+                  <p className="text-titanium font-semibold text-sm uppercase tracking-widest mb-2">{member.role}</p>
+                  <p className="text-muted-foreground text-sm font-medium">{member.specialty}</p>
+                </div>
               </div>
-            </ScrollAnimation>
+            </div>
           ))}
         </div>
 
-        {/* Company Info */}
-        <ScrollAnimation className="mt-20 text-center">
-          <div className="max-w-3xl mx-auto p-8 bg-muted/30 rounded-2xl border border-border">
-            <h3 className="font-serif text-2xl font-bold text-foreground mb-4">Sobre o Escritório</h3>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              Com mais de 15 anos de experiência em direito internacional e estruturação patrimonial, nosso escritório
-              já assessorou centenas de famílias e empresas na internacionalização de seus ativos. Somos referência no
-              mercado brasileiro em soluções offshore seguras e em conformidade com todas as legislações aplicáveis.
-            </p>
-            <div className="flex flex-wrap justify-center gap-8 text-center">
-              <div>
-                <span className="block text-3xl font-bold text-foreground">15+</span>
-                <span className="text-sm text-muted-foreground">Anos de Experiência</span>
-              </div>
-              <div>
-                <span className="block text-3xl font-bold text-foreground">500+</span>
-                <span className="text-sm text-muted-foreground">Estruturas Implementadas</span>
-              </div>
-              <div>
-                <span className="block text-3xl font-bold text-foreground">98%</span>
-                <span className="text-sm text-muted-foreground">Clientes Satisfeitos</span>
+        {/* Gradient Overlays */}
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+      </div>
+
+      {/* Company Info */}
+      <div className="container mx-auto px-4 lg:px-8 mt-24">
+        <ScrollAnimation>
+          <div className="max-w-4xl mx-auto p-12 bg-muted/20 rounded-3xl border border-border/50 relative overflow-hidden backdrop-blur-sm shadow-inner group">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-titanium/5 rounded-full -mr-32 -mt-32 blur-3xl transition-colors group-hover:bg-titanium/10" />
+
+            <div className="relative z-10">
+              <h3 className="font-serif text-3xl font-bold text-foreground mb-6 text-center">Referência em Soluções Offshore</h3>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-10 text-center max-w-3xl mx-auto">
+                Assessoramos centenas de famílias e empresas na internacionalização de ativos, sendo referência absoluta no mercado brasileiro em conformidade legal e segurança patrimonial.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 text-center border-t border-border/30 pt-10">
+                <div>
+                  <span className="block text-4xl font-bold text-foreground mb-1">15+</span>
+                  <span className="text-xs uppercase tracking-widest text-titanium font-bold">Anos de Experiência</span>
+                </div>
+                <div>
+                  <span className="block text-4xl font-bold text-foreground mb-1">500+</span>
+                  <span className="text-xs uppercase tracking-widest text-titanium font-bold">Estruturas Implementadas</span>
+                </div>
+                <div>
+                  <span className="block text-4xl font-bold text-foreground mb-1">98%</span>
+                  <span className="text-xs uppercase tracking-widest text-titanium font-bold">Satisfação do Cliente</span>
+                </div>
               </div>
             </div>
           </div>

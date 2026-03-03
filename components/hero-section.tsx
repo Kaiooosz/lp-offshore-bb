@@ -49,16 +49,13 @@ export function HeroSection() {
           </div>
 
           {/* Main Title */}
-          <h1 className="animate-on-scroll opacity-0 animation-delay-200 font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-tight mb-6 text-balance">
-            Proteja seu patrimônio.
-            <br />
-            <span className="text-titanium-light">Expanda globalmente.</span>
+          <h1 className="animate-on-scroll opacity-0 animation-delay-200 font-serif text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-primary-foreground leading-[1.1] mb-8 text-balance">
+            Proteja seu <br /> <span className="text-titanium-light bg-clip-text text-transparent bg-gradient-to-r from-titanium-light to-titanium">patrimônio.</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="animate-on-scroll opacity-0 animation-delay-400 text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10 leading-relaxed text-pretty">
-            Estruturação offshore personalizada para proteção patrimonial, planejamento tributário e expansão
-            internacional do seu negócio.
+          <p className="animate-on-scroll opacity-0 animation-delay-400 text-xl md:text-2xl text-primary-foreground/70 max-w-3xl mx-auto mb-12 leading-relaxed font-light tracking-wide">
+            Estruturação offshore personalizada para <span className="text-primary-foreground font-semibold">proteção patrimonial</span>, planejamento tributário e expansão internacional.
           </p>
 
           {/* CTA Buttons */}
