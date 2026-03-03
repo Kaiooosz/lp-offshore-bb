@@ -49,13 +49,13 @@ export function HeroSection() {
           </div>
 
           {/* Main Title */}
-          <h1 className="animate-on-scroll opacity-0 animation-delay-200 font-serif text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-primary-foreground leading-[1.1] mb-8 text-balance">
-            Proteja seu <br /> <span className="text-titanium-light bg-clip-text text-transparent bg-gradient-to-r from-titanium-light to-titanium">patrimônio.</span>
+          <h1 className="animate-on-scroll opacity-0 animation-delay-200 font-serif text-6xl sm:text-8xl lg:text-9xl xl:text-[12rem] font-bold text-primary-foreground leading-[0.85] mb-12 tracking-tighter">
+            Proteja seu <br /> <span className="text-titanium-light bg-clip-text text-transparent bg-gradient-to-r from-titanium-light via-white to-titanium">patrimônio.</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="animate-on-scroll opacity-0 animation-delay-400 text-xl md:text-2xl text-primary-foreground/70 max-w-3xl mx-auto mb-12 leading-relaxed font-light tracking-wide">
-            Estruturação offshore personalizada para <span className="text-primary-foreground font-semibold">proteção patrimonial</span>, planejamento tributário e expansão internacional.
+          <p className="animate-on-scroll opacity-0 animation-delay-400 text-xl md:text-3xl text-primary-foreground/40 max-w-4xl mx-auto mb-16 leading-relaxed font-light tracking-tight px-4">
+            Consultoria jurídica de elite para <span className="text-white font-medium">proteção patrimonial</span>, planejamento tributário internacional e estruturação de holdings globais.
           </p>
 
           {/* CTA Buttons */}
