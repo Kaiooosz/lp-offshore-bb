@@ -5,26 +5,33 @@ import { ScrollAnimation } from "@/components/scroll-animation"
 const steps = [
   {
     number: "01",
-    title: "Diagnóstico Inicial",
-    description:
-      "Análise completa do seu perfil patrimonial, objetivos e necessidades específicas para definir a melhor estratégia.",
+    title: "Entenda o seu objetivo",
+    description: "Isenção de impostos? Blindagem patrimonial? Expansão internacional? Alinhamos o objetivo para definir a melhor jurisdição.",
   },
   {
     number: "02",
-    title: "Planejamento Estratégico",
-    description:
-      "Elaboração de um plano personalizado com escolha da jurisdição ideal e estrutura societária adequada.",
+    title: "Escolha o país ideal",
+    description: "Analisamos custos, proteção jurídica e facilidade de compliance bancário para priorizar o que realmente importa.",
   },
   {
     number: "03",
-    title: "Implementação",
-    description:
-      "Abertura da empresa, conta bancária internacional e toda documentação necessária com acompanhamento total.",
+    title: "Defina o serviço ideal",
+    description: "Escolha o escopo: Abertura simples ou Pacote Completo (conta, gateways, suporte humanizado).",
   },
   {
     number: "04",
-    title: "Gestão Contínua",
-    description: "Suporte permanente com compliance, declarações fiscais e assessoria para decisões estratégicas.",
+    title: "Formulário rápido",
+    description: "Escolha o serviço na página do país e preencha um formulário curto (~2 min) com os dados necessários.",
+  },
+  {
+    number: "05",
+    title: "Faça o pagamento",
+    description: "Conclua o pagamento 100% online. Você receberá confirmação e um gestor de contas entrará em contato.",
+  },
+  {
+    number: "06",
+    title: "Até a conclusão",
+    description: "Tratamos de tudo. Prazo de 5 a 90 dias. Para a conta, enviaremos instruções para verificação facial.",
   },
 ]
 
@@ -35,14 +42,14 @@ export function StepsSection() {
         <ScrollAnimation className="text-center mb-16">
           <span className="text-sm font-medium text-titanium-light uppercase tracking-wider">Metodologia</span>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-4 text-balance">
-            Como estruturamos seu Offshore
+            Monte a sua Offshore em 6 Passos!
           </h2>
           <p className="text-lg text-primary-foreground/70 max-w-2xl mx-auto text-pretty">
-            Um processo claro, seguro e totalmente acompanhado por especialistas.
+            Sem viajar para fora, faça tudo 100% online aqui no site!
           </p>
         </ScrollAnimation>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {steps.map((step, index) => (
             <ScrollAnimation key={index} delay={index * 150}>
               <div className="relative">

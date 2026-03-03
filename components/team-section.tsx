@@ -19,6 +19,69 @@ const team = [
     image: "/mariana.jpg",
     linkedin: "#",
   },
+  {
+    name: "Fabiano",
+    role: "Especialista",
+    specialty: "Consultoria Internacional",
+    image: "/fabiano.jpg",
+    linkedin: "#",
+  },
+  {
+    name: "Kaio",
+    role: "Full-Stack Developer",
+    specialty: "Tecnologia e Operações",
+    image: "/kaio.jpg",
+    linkedin: "#",
+  },
+  {
+    name: "Alice",
+    role: "Consultora",
+    specialty: "Compliance",
+    image: "/alice.jpg",
+    linkedin: "#",
+  },
+  {
+    name: "Allan",
+    role: "Especialista",
+    specialty: "Legal",
+    image: "/allan.jpg",
+    linkedin: "#",
+  },
+  {
+    name: "Boaz",
+    role: "Consultor",
+    specialty: "Estratégia",
+    image: "/boaz.jpg",
+    linkedin: "#",
+  },
+  {
+    name: "Clara",
+    role: "Atendimento",
+    specialty: "Suporte Especializado",
+    image: "/clara.jpg",
+    linkedin: "#",
+  },
+  {
+    name: "Micaelle",
+    role: "Consultora",
+    specialty: "Projetos",
+    image: "/micaelle.jpg",
+    linkedin: "#",
+  },
+  {
+    name: "Roberto",
+    role: "Especialista",
+    specialty: "Tributário",
+    image: "/roberto.jpg",
+    linkedin: "#",
+  },
+  {
+    name: "Tomas",
+    role: "Consultor",
+    specialty: "Jurisdições",
+    image: "/tomas.jpg",
+    linkedin: "#",
+  },
 ]
 
 export function TeamSection() {
@@ -35,7 +98,7 @@ export function TeamSection() {
           </p>
         </ScrollAnimation>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {team.map((member, index) => (
             <ScrollAnimation key={index} delay={index * 100}>
               <div className="group text-center">

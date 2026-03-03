@@ -8,10 +8,10 @@ import { Menu, X } from "lucide-react"
 const navLinks = [
   { href: "#beneficios", label: "Benefícios" },
   { href: "#processo", label: "Processo" },
+  { href: "#jurisdicoes-grade", label: "Jurisdições" },
+  { href: "#consultoria", label: "Consultoria" },
   { href: "#equipe", label: "Equipe" },
-  { href: "#depoimentos", label: "Depoimentos" },
-  { href: "#artigos", label: "Artigos" },
-  { href: "https://api.whatsapp.com/send/?phone=5511982712025&text=Ol%C3%A1%2C+gostaria+de+agendar+um+diagn%C3%B3stico+estrat%C3%A9gico+com+a+Bezerra+Borges+Advogados", label: "Contato" },
+  { href: "https://api.whatsapp.com/send/?phone=5511982712025&text=Olá, gostaria de agendar um diagnóstico estratégico com a Bezerra Borges Advogados", label: "Contato" },
 ]
 
 export function Header() {
