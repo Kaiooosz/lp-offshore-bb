@@ -1,12 +1,13 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Shield, Globe, TrendingUp } from "lucide-react"
 import Link from "next/link"
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -25,6 +26,30 @@ export function HeroSection() {
 
     return () => observer.disconnect()
   }, [])
+
+  const handleConsultationCheckout = async () => {
+    try {
+      setLoading(true)
+      const response = await fetch("/api/stripe/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount: 2000,
+          name: "Consulta com Contador - BBLAW",
+          priceId: "price_1TAElnFsbLGLnQ7wjhz7dkYI",
+        }),
+      })
+
+      const { url, error } = await response.json()
+      if (error) throw new Error(error)
+      if (url) window.location.href = url
+    } catch (error) {
+      console.error("Hero checkout error:", error)
+      alert("Erro ao iniciar agendamento. Tente novamente.")
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -61,14 +86,13 @@ export function HeroSection() {
           {/* CTA Buttons */}
           <div className="animate-on-scroll opacity-0 animation-delay-600 flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
             <Button
-              asChild
               size="lg"
               className="bg-background text-foreground hover:bg-background/90 text-base px-8 py-6"
+              onClick={handleConsultationCheckout}
+              disabled={loading}
             >
-              <Link href="https://api.whatsapp.com/send/?phone=5511982712025&text=Ol%C3%A1%2C+gostaria+de+agendar+um+diagn%C3%B3stico+estrat%C3%A9gico+com+a+Bezerra+Borges+Advogados" target="_blank">
-                Agendar Consulta Gratuita
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+              {loading ? "Processando..." : "Agendar Consulta de Especialista"}
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <Button
               asChild

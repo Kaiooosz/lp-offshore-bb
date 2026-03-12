@@ -17,6 +17,31 @@ const navLinks = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  const handleConsultationCheckout = async () => {
+    try {
+      setLoading(true)
+      const response = await fetch("/api/stripe/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount: 2000,
+          name: "Consulta com Contador - BBLAW",
+          priceId: "price_1TAElnFsbLGLnQ7wjhz7dkYI",
+        }),
+      })
+
+      const { url, error } = await response.json()
+      if (error) throw new Error(error)
+      if (url) window.location.href = url
+    } catch (error) {
+      console.error("Header checkout error:", error)
+      alert("Erro ao iniciar agendamento. Tente novamente.")
+    } finally {
+      setLoading(false)
+    }
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,12 +59,6 @@ export function Header() {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          {/* <Link href="/Logofundopreto" className="flex items-center gap-3">
-             <div className="w-10 h-10 bg-primary rounded-sm flex items-center justify-center">
-              <span className="text-primary-foreground font-serif font-bold text-xl">O</span>
-            </div>
-            <span className="font-serif text-xl font-semibold tracking-tight text-foreground">Offshore</span> 
-          </Link> */}
           <Link href="/" className="flex items-center">
             <img
               src="/Logofundopreto.png"
@@ -62,8 +81,12 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link href="https://api.whatsapp.com/send/?phone=5511982712025&text=Ol%C3%A1%2C+gostaria+de+agendar+um+diagn%C3%B3stico+estrat%C3%A9gico+com+a+Bezerra+Borges+Advogados" target="_blank">Agendar Consulta</Link>
+            <Button
+              className="bg-primary text-primary-foreground hover:bg-primary/90"
+              onClick={handleConsultationCheckout}
+              disabled={loading}
+            >
+              {loading ? "..." : "Agendar Consulta"}
             </Button>
           </div>
 
@@ -92,8 +115,12 @@ export function Header() {
                 </Link>
               ))}
               <div className="px-4 pt-4 border-t border-border">
-                <Button asChild className="w-full bg-primary text-primary-foreground">
-                  <Link href="https://api.whatsapp.com/send/?phone=5511982712025&text=Ol%C3%A1%2C+gostaria+de+agendar+um+diagn%C3%B3stico+estrat%C3%A9gico+com+a+Bezerra+Borges+Advogados" target="_blank">Agendar Consulta</Link>
+                <Button
+                  className="w-full bg-primary text-primary-foreground"
+                  onClick={handleConsultationCheckout}
+                  disabled={loading}
+                >
+                  {loading ? "Processando..." : "Agendar Consulta"}
                 </Button>
               </div>
             </nav>

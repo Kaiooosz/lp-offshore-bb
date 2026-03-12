@@ -1,9 +1,9 @@
 "use client"
 
+import { useState } from "react"
 import { ScrollAnimation } from "@/components/scroll-animation"
-import { Check, ArrowRight } from "lucide-react"
+import { Check, ArrowRight, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import Link from "next/link"
 
 const jurisdictions = [
     {
@@ -40,9 +40,10 @@ const jurisdictions = [
             "Número Fiscal Federal (EIN) entre 5 e 45 dias.",
             "Conta bancária e gateways entre 1 e 30 dias.",
         ],
-        price: "A partir de US$ 599",
-        buttonText: "Leia sobre os EUA",
-        href: "https://api.whatsapp.com/send/?phone=5511982712025&text=Olá, gostaria de saber mais sobre a estrutura nos EUA.",
+        price: "US$ 990",
+        amount: 99000,
+        priceId: "price_1T9b87FsbLGLnQ7woJUUeV9p", // Wyoming as default
+        buttonText: "Iniciar abertura nos EUA",
         note: "Atenção: para ter direito à isenção de impostos, a empresa deve possuir apenas um sócio e esse sócio não pode residir nos Estados Unidos. Além disso, a empresa não pode vender para clientes americanos nem contratar funcionários americanos.",
     },
     {
@@ -58,9 +59,10 @@ const jurisdictions = [
             "Abertura de conta bancária e conexão com gateways em até 1 mês.",
             "Para te processar, terão de pagar US$ 100 mil apenas para abrir um processo judicial.",
         ],
-        price: "A partir de US$ 2.900",
-        buttonText: "Leia sobre Névis",
-        href: "https://api.whatsapp.com/send/?phone=5511982712025&text=Olá, gostaria de saber mais sobre a estrutura de Névis.",
+        price: "US$ 2.900",
+        amount: 290000,
+        priceId: "price_1T9bE6FsbLGLnQ7w16ApKUur",
+        buttonText: "Iniciar abertura em Névis",
     },
     {
         id: "bahamas",
@@ -76,13 +78,44 @@ const jurisdictions = [
             "Registro de empresa em até 30 dias.",
             "Conta bancária e gateways em até 30 dias.",
         ],
-        price: "A partir de US$ 2.900",
-        buttonText: "Falar com Especialista",
-        href: "https://api.whatsapp.com/send/?phone=5511982712025&text=Olá, gostaria de saber mais sobre a estrutura das Bahamas.",
+        price: "US$ 2.900",
+        amount: 290000,
+        priceId: "price_1T9bEpFsbLGLnQ7wU6a1rzBy",
+        buttonText: "Iniciar abertura nas Bahamas",
     },
 ]
 
 export function JurisdictionsDetailed() {
+    const [loading, setLoading] = useState<string | null>(null)
+
+    const handleCheckout = async (j: typeof jurisdictions[0]) => {
+        if ("priceId" in j && j.priceId) {
+            try {
+                setLoading(j.id)
+                const response = await fetch("/api/stripe/checkout", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        amount: (j as any).amount,
+                        name: `Abertura de Empresa - ${j.name}`,
+                        priceId: (j as any).priceId,
+                    }),
+                })
+
+                const { url, error } = await response.json()
+                if (error) throw new Error(error)
+                if (url) window.location.href = url
+            } catch (error) {
+                console.error("Checkout error:", error)
+                alert("Erro ao iniciar pagamento. Tente novamente.")
+            } finally {
+                setLoading(null)
+            }
+        } else {
+            window.open((j as any).href || `https://api.whatsapp.com/send/?phone=5511982712025&text=Olá, gostaria de saber mais sobre a estrutura de ${j.name}`, "_blank")
+        }
+    }
+
     return (
         <section className="py-32 bg-background relative overflow-hidden" id="jurisdicoes-detalhes">
             {/* Background elements */}
@@ -128,12 +161,12 @@ export function JurisdictionsDetailed() {
                                         </ul>
                                     </div>
 
-                                    {j.note && (
+                                    {(j as any).note && (
                                         <div className="relative p-6 bg-muted/30 border border-border/50 rounded-2xl overflow-hidden group/note">
                                             <div className="absolute top-0 left-0 w-1 h-full bg-titanium" />
                                             <p className="text-sm text-muted-foreground leading-relaxed italic relative z-10">
                                                 <span className="text-titanium font-bold uppercase text-[10px] tracking-widest block mb-2 opacity-60 group-hover/note:opacity-100 transition-opacity">Nota Importante</span>
-                                                {j.note}
+                                                {(j as any).note}
                                             </p>
                                         </div>
                                     )}
@@ -145,11 +178,15 @@ export function JurisdictionsDetailed() {
                                                 {j.price}
                                             </div>
                                         </div>
-                                        <Button asChild size="lg" className="h-16 px-10 bg-primary text-primary-foreground group rounded-full text-base font-bold shadow-xl hover:shadow-2xl hover:bg-primary/95 transition-all">
-                                            <Link href={j.href} target="_blank">
-                                                {j.buttonText}
-                                                <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-2 transition-transform" />
-                                            </Link>
+                                        <Button 
+                                            size="lg" 
+                                            className="h-16 px-10 bg-primary text-primary-foreground group rounded-full text-base font-bold shadow-xl hover:shadow-2xl hover:bg-primary/95 transition-all"
+                                            onClick={() => handleCheckout(j)}
+                                            disabled={loading !== null}
+                                        >
+                                            {loading === j.id ? <Loader2 className="mr-3 h-5 w-5 animate-spin" /> : null}
+                                            {j.buttonText}
+                                            <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-2 transition-transform" />
                                         </Button>
                                     </div>
                                 </div>
