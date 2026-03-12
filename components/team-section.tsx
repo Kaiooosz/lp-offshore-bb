@@ -13,13 +13,6 @@ const team = [
     linkedin: "#",
   },
   {
-    name: "Dra. Mariana",
-    role: "Sócia",
-    specialty: "Planejamento Patrimonial",
-    image: "/mariana.jpg",
-    linkedin: "#",
-  },
-  {
     name: "Fabiano",
     role: "Especialista",
     specialty: "Consultoria Internacional",
@@ -48,13 +41,6 @@ const team = [
     linkedin: "#",
   },
   {
-    name: "Boaz",
-    role: "Consultor",
-    specialty: "Estratégia",
-    image: "/boaz.jpg",
-    linkedin: "#",
-  },
-  {
     name: "Clara",
     role: "Atendimento",
     specialty: "Suporte Especializado",
@@ -73,13 +59,6 @@ const team = [
     role: "Especialista",
     specialty: "Tributário",
     image: "/roberto.jpg",
-    linkedin: "#",
-  },
-  {
-    name: "Tomas",
-    role: "Consultor",
-    specialty: "Jurisdições",
-    image: "/tomas.jpg",
     linkedin: "#",
   },
 ]
