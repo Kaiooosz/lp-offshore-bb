@@ -54,37 +54,42 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section className="py-24 px-6 bg-background mb-20" id="faq">
-      <div className="container mx-auto">
-        <ScrollAnimation className="max-w-3xl mx-auto">
+    <section className="py-24 md:py-32 bg-black relative" id="faq">
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0a0a0a] to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050505] to-transparent pointer-events-none" />
+
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-24 items-start">
           {/* Section header */}
-          <div className="text-center mb-12">
-            <span className="text-sm font-medium text-titanium uppercase tracking-wider">Perguntas Frequentes</span>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-4 tracking-tight">
-              Dúvidas comuns
+          <ScrollAnimation animation="slide-left" className="lg:sticky lg:top-32">
+            <h2 className="text-3xl md:text-5xl font-light uppercase tracking-widest leading-none mb-4 text-transparent bg-clip-text bg-gradient-to-br from-white via-white/80 to-white/20">
+              FAQS
             </h2>
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Respostas para as dúvidas mais comuns sobre nossos serviços
+            <p className="text-xs text-white/40 uppercase tracking-[0.2em] font-bold">
+              Dúvidas comuns
             </p>
-          </div>
+          </ScrollAnimation>
 
           {/* FAQ Accordion */}
-          <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((faq, index) => (
-              <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="bg-muted/30 border border-border rounded-xl px-6">
-                <AccordionTrigger className="text-left text-foreground hover:no-underline py-6 text-base md:text-lg font-semibold">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pb-6">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </ScrollAnimation>
+          <ScrollAnimation animation="slide-right">
+            <Accordion type="single" collapsible className="space-y-0 w-full text-white border-t border-white/5">
+              {faqs.map((faq, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index}`}
+                  className="bg-transparent border-0 border-b border-white/5 px-0 delay-75 group"
+                >
+                  <AccordionTrigger className="text-left text-white/80 hover:text-white hover:no-underline py-8 text-sm md:text-base font-light tracking-wide transition-colors [&[data-state=open]>svg]:rotate-180 [&[data-state=open]>svg]:text-white">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-white/40 leading-relaxed font-light pb-8 text-sm md:text-[15px] pr-8">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </ScrollAnimation>
+        </div>
       </div>
     </section>
   );

@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Shield, Globe, TrendingUp } from "lucide-react"
 import Link from "next/link"
 
 export function HeroSection() {
@@ -15,6 +14,7 @@ export function HeroSection() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("animate-fade-up")
+            entry.target.classList.remove("opacity-0", "translate-y-8")
           }
         })
       },
@@ -52,83 +52,57 @@ export function HeroSection() {
   }
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('/modern-city-skyline-at-dusk-with-glass-buildings-a.jpg')`,
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/70 to-primary/90" />
-      </div>
+    <section ref={sectionRef} className="relative min-h-screen flex flex-col items-center justify-start overflow-hidden bg-black pt-40 pb-20">
+      
+      {/* Abstract Gradient Glows similar to Kast */}
+      <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-emerald-500/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 w-[30vw] h-[30vw] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 lg:px-8 pt-32 pb-20">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <div className="animate-on-scroll opacity-0 inline-flex items-center gap-2 bg-background/10 backdrop-blur-sm border border-background/20 rounded-full px-4 py-2 mb-8">
-            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-            <span className="text-sm text-primary-foreground/90">Mais de 500 estruturas implementadas</span>
-          </div>
-
-          {/* Main Title */}
-          <h1 className="animate-on-scroll opacity-0 animation-delay-200 font-serif text-6xl sm:text-8xl lg:text-9xl xl:text-[12rem] font-bold text-primary-foreground leading-[0.85] mb-12 tracking-tighter">
-            Proteja seu <br /> <span className="text-titanium-light bg-clip-text text-transparent bg-gradient-to-r from-titanium-light via-white to-titanium">patrimônio.</span>
+      <div className="relative z-10 container mx-auto px-6 max-w-7xl flex flex-col items-center">
+        
+        {/* Main Titles */}
+        <div className="text-center mb-12 animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000">
+          <h1 className="text-4xl sm:text-6xl lg:text-[7.5rem] font-light text-white leading-[0.85] tracking-tighter mb-4">
+            É UM MUNDO<br />SELVAGEM.
           </h1>
-
-          {/* Subtitle */}
-          <p className="animate-on-scroll opacity-0 animation-delay-400 text-xl md:text-3xl text-primary-foreground/40 max-w-4xl mx-auto mb-16 leading-relaxed font-light tracking-tight px-4">
-            Consultoria jurídica de elite para <span className="text-white font-medium">proteção patrimonial</span>, planejamento tributário internacional e estruturação de holdings globais.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="animate-on-scroll opacity-0 animation-delay-600 flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <Button
-              size="lg"
-              className="bg-background text-foreground hover:bg-background/90 text-base px-8 py-6"
-              onClick={handleConsultationCheckout}
-              disabled={loading}
-            >
-              {loading ? "Processando..." : "Agendar Consulta de Especialista"}
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-base px-8 py-6 bg-transparent"
-            >
-              <Link href="#processo">Conhecer o Processo</Link>
-            </Button>
-          </div>
-
-          {/* Stats */}
-          <div className="animate-on-scroll opacity-0 animation-delay-800 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
-            {[
-              { icon: Shield, value: "100%", label: "Conformidade Legal" },
-              { icon: Globe, value: "15+", label: "Jurisdições" },
-              { icon: TrendingUp, value: "R$2Bi+", label: "Patrimônio Estruturado" },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center p-6 bg-background/5 backdrop-blur-sm rounded-lg border border-background/10"
-              >
-                <stat.icon className="h-8 w-8 text-titanium-light mb-3" />
-                <span className="text-3xl font-bold text-primary-foreground mb-1">{stat.value}</span>
-                <span className="text-sm text-primary-foreground/70">{stat.label}</span>
-              </div>
-            ))}
-          </div>
+          <h2 className="text-xl sm:text-4xl lg:text-7xl font-light text-white/50 tracking-tighter">
+            PROTEJA SEU PATRIMÔNIO.
+          </h2>
         </div>
-      </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-        <div className="w-6 h-10 border-2 border-primary-foreground/30 rounded-full flex justify-center pt-2">
-          <div className="w-1.5 h-3 bg-primary-foreground/50 rounded-full animate-bounce" />
+        {/* Subtitle */}
+        <p className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000 delay-200 text-lg md:text-xl text-white/40 max-w-2xl text-center mb-12 leading-relaxed tracking-wide font-light">
+          Consultoria jurídica de elite para proteção patrimonial internacional, otimização tributária e estruturação de holdings globais.
+        </p>
+
+        {/* CTA */}
+        <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000 delay-300">
+          <Button
+            className="btn-shimmer bg-transparent hover:bg-white text-white hover:text-black rounded-full px-12 py-8 text-sm font-light tracking-widest uppercase transition-all border border-white/30 backdrop-blur-md"
+            onClick={handleConsultationCheckout}
+            disabled={loading}
+          >
+            {loading ? "AGUARDE..." : "INICIAR AGORA"}
+          </Button>
         </div>
+
+
+        {/* Stats Strip */}
+        <div className="w-full mt-24 border-t border-white/10 pt-12 pb-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+          {[
+            { tag: "JURISDIÇÕES", value: "15+" },
+            { tag: "ESTRUTURAS", value: "500+" },
+            { tag: "PROTEÇÃO", value: "MÁXIMA" },
+            { tag: "COMPLIANCE", value: "100%" }
+          ].map((stat, i) => (
+             <div key={i} className="text-center animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000" style={{ transitionDelay: `${i * 100 + 400}ms` }}>
+                <p className="text-[10px] sm:text-xs text-white/40 tracking-[0.2em] font-light mb-2 uppercase">{stat.tag}</p>
+                <p className="text-2xl sm:text-3xl text-white font-light tracking-tighter">{stat.value}</p>
+             </div>
+          ))}
+        </div>
+
       </div>
     </section>
   )

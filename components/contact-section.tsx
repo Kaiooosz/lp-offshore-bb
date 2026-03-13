@@ -1,152 +1,79 @@
 "use client"
 
 import type React from "react"
-
 import { ScrollAnimation } from "@/components/scroll-animation"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Calendar, ArrowRight } from "lucide-react"
-import { useState } from "react"
+import { Calendar, ArrowRight, Phone, Mail, MessageCircle } from "lucide-react"
 
 export function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    patrimony: "",
-    message: "",
-  })
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const baseMessage = "Olá, gostaria de agendar um diagnóstico estratégico com a Bezerra Borges Advogados"
-    const formInfo = `\n\nNome: ${formData.name}\nEmail: ${formData.email}\nTelefone: ${formData.phone}\nPatrimônio: ${formData.patrimony}\nMensagem: ${formData.message}`
-    const fullMessage = encodeURIComponent(baseMessage + formInfo)
-    window.open(`https://api.whatsapp.com/send/?phone=5511982712025&text=${fullMessage}`, "_blank")
-  }
-
   return (
-    <section className="py-24 bg-primary text-primary-foreground" id="contato">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto">
+    <section className="py-24 md:py-32 bg-black relative" id="contato">
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0a0a0a] to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050505] to-transparent pointer-events-none" />
+
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
-          <ScrollAnimation animation="slide-left">
-            <span className="text-sm font-medium text-titanium-light uppercase tracking-wider">Contato</span>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-6 text-balance">
-              Agende sua consulta!
+          <ScrollAnimation animation="slide-left" className="pt-8">
+            <span className="text-[10px] font-light text-white/50 uppercase tracking-[0.2em] mb-4 block">
+              Contato VIP
+            </span>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tighter uppercase leading-tight text-transparent bg-clip-text bg-gradient-to-br from-white via-white/80 to-white/20 mb-6">
+              INICIE SUA JORNADA GLOBAL
             </h2>
-            <p className="text-lg text-primary-foreground/70 mb-8 leading-relaxed text-pretty">
-              Dê o primeiro passo para a internacionalização do seu patrimônio. Nossa equipe entrará em contato em até
-              24 horas para agendar uma conversa personalizada.
+            <p className="text-lg text-white/50 mb-12 leading-relaxed font-light max-w-md">
+              Dê o primeiro passo para a estruturação do seu patrimônio. Estamos prontos para oferecer soluções estratégicas para o seu contexto específico.
             </p>
-
-            <div className="space-y-6">
-              <div className="flex items-center gap-4 p-4 bg-primary-foreground/5 rounded-lg border border-primary-foreground/10">
-                <Calendar className="h-10 w-10 text-titanium-light" />
-                <div>
-                  <h3 className="font-semibold mb-1">Consulta Online ou Presencial</h3>
-                  <p className="text-sm text-primary-foreground/60">Escolha o formato mais conveniente para você</p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div className="p-4 bg-primary-foreground/5 rounded-lg border border-primary-foreground/10">
-                  <p className="font-semibold mb-1">Tempo médio</p>
-                  <p className="text-primary-foreground/60">45 minutos</p>
-                </div>
-                <div className="p-4 bg-primary-foreground/5 rounded-lg border border-primary-foreground/10">
-                  <p className="font-semibold mb-1">Valor</p>
-                  <p className="text-primary-foreground/60">$100,00</p>
-                </div>
-              </div>
-            </div>
           </ScrollAnimation>
 
-          {/* Right Content - Form */}
-          <ScrollAnimation animation="slide-right">
-            <form onSubmit={handleSubmit} className="bg-background text-foreground p-8 rounded-2xl">
-              <h3 className="font-semibold text-xl mb-6">Preencha seus dados</h3>
-              <div className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    Nome completo
-                  </label>
-                  <Input
-                    id="name"
-                    placeholder="Seu nome"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
-                  />
+          {/* Right Content - 2x2 Grid */}
+          <ScrollAnimation animation="slide-right" className="w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 border-l border-t border-white/10">
+              
+              <a href="#consultoria" className="flex flex-col items-start p-10 border-r border-b border-white/10 group hover:bg-white/5 transition-colors">
+                <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center shrink-0 mb-8 bg-[#0a0a0a] group-hover:border-white/30 transition-all">
+                  <Calendar className="h-5 w-5 text-white/50 group-hover:text-white transition-colors" />
                 </div>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      E-mail
-                    </label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="seu@email.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                      Telefone
-                    </label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="(11) 99999-9999"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      required
-                    />
-                  </div>
+                <h3 className="font-light text-xl text-white mb-2 tracking-tight">Agende uma Consulta</h3>
+                <p className="text-sm font-light text-white/50 mb-8">Online com especialistas</p>
+                <span className="text-[10px] font-light text-white/40 uppercase tracking-[0.2em] mt-auto flex items-center gap-2 group-hover:text-white transition-colors">
+                  Agendar <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </a>
+
+              <a href="tel:+5511982712025" className="flex flex-col items-start p-10 border-r border-b border-white/10 group hover:bg-white/5 transition-colors">
+                <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center shrink-0 mb-8 bg-[#0a0a0a] group-hover:border-white/30 transition-all">
+                  <Phone className="h-5 w-5 text-white/50 group-hover:text-white transition-colors" />
                 </div>
-                <div>
-                  <label htmlFor="patrimony" className="block text-sm font-medium mb-2">
-                    Faixa de patrimônio
-                  </label>
-                  <select
-                    id="patrimony"
-                    className="w-full h-10 px-3 rounded-md border border-input bg-background text-foreground text-sm"
-                    value={formData.patrimony}
-                    onChange={(e) => setFormData({ ...formData, patrimony: e.target.value })}
-                    required
-                  >
-                    <option value="">Selecione</option>
-                    <option value="500k-1m">R$ 500 mil - R$ 1 milhão</option>
-                    <option value="1m-5m">R$ 1 milhão - R$ 5 milhões</option>
-                    <option value="5m-10m">R$ 5 milhões - R$ 10 milhões</option>
-                    <option value="10m+">Acima de R$ 10 milhões</option>
-                  </select>
+                <h3 className="font-light text-xl text-white mb-2 tracking-tight">Ligue para nós</h3>
+                <p className="text-sm font-light text-white/50 mb-8">+55 (11) 98271-2025</p>
+                <span className="text-[10px] font-light text-white/40 uppercase tracking-[0.2em] mt-auto flex items-center gap-2 group-hover:text-white transition-colors">
+                  Ligar <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </a>
+
+              <a href="mailto:contato@bezerraborges.com" className="flex flex-col items-start p-10 border-r border-b border-white/10 group hover:bg-white/5 transition-colors">
+                <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center shrink-0 mb-8 bg-[#0a0a0a] group-hover:border-white/30 transition-all">
+                  <Mail className="h-5 w-5 text-white/50 group-hover:text-white transition-colors" />
                 </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Mensagem (opcional)
-                  </label>
-                  <Textarea
-                    id="message"
-                    placeholder="Conte-nos sobre seus objetivos..."
-                    rows={4}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  />
+                <h3 className="font-light text-xl text-white mb-2 tracking-tight">Envie um e-mail</h3>
+                <p className="text-sm font-light text-white/50 mb-8">contato@bezerraborges.com</p>
+                <span className="text-[10px] font-light text-white/40 uppercase tracking-[0.2em] mt-auto flex items-center gap-2 group-hover:text-white transition-colors">
+                  Enviar <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </a>
+
+              <a href="https://api.whatsapp.com/send/?phone=5511982712025&text=Olá, gostaria de agendar um diagnóstico estratégico com a Bezerra Borges Advogados" target="_blank" rel="noreferrer" className="flex flex-col items-start p-10 border-r border-b border-white/10 group hover:bg-white/5 transition-colors">
+                <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center shrink-0 mb-8 bg-[#0a0a0a] group-hover:border-white/30 transition-all">
+                  <MessageCircle className="h-5 w-5 text-white/50 group-hover:text-white transition-colors" />
                 </div>
-                <Button type="submit" className="w-full" size="lg">
-                  Solicitar Consulta
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <p className="text-xs text-muted-foreground text-center">
-                  Ao enviar, você concorda com nossa política de privacidade.
-                </p>
-              </div>
-            </form>
+                <h3 className="font-light text-xl text-white mb-2 tracking-tight">WhatsApp</h3>
+                <p className="text-sm font-light text-white/50 mb-8">Atendimento rápido e direto</p>
+                <span className="text-[10px] font-light text-white/40 uppercase tracking-[0.2em] mt-auto flex items-center gap-2 group-hover:text-white transition-colors">
+                  Conversar <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </a>
+
+            </div>
           </ScrollAnimation>
         </div>
       </div>

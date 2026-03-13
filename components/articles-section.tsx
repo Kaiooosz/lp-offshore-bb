@@ -33,45 +33,57 @@ const articles = [
 
 export function ArticlesSection() {
   return (
-    <section className="py-24 bg-background" id="artigos">
-      <div className="container mx-auto px-4 lg:px-8">
-        <ScrollAnimation className="text-center mb-16">
-          <span className="text-sm font-medium text-titanium uppercase tracking-wider">Curadoria de Conteúdo</span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-4 text-balance">
+    <section className="py-24 md:py-32 bg-black relative" id="artigos">
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#050505] to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none" />
+
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        <ScrollAnimation className="text-center mb-16 md:mb-24">
+          <span className="text-[10px] font-bold text-white/50 uppercase tracking-[0.2em] mb-4 block">
+            Curadoria de Conteúdo
+          </span>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-light mb-6 uppercase tracking-tighter leading-tight text-transparent bg-clip-text bg-gradient-to-br from-white via-white/80 to-white/20">
             Artigos e Insights
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
+          <p className="text-sm md:text-lg text-white/40 max-w-2xl mx-auto font-light leading-relaxed">
             Conteúdo educativo e atualizado sobre estruturação internacional e proteção patrimonial.
           </p>
         </ScrollAnimation>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {articles.map((article, index) => (
             <ScrollAnimation key={index} delay={index * 150}>
-              <Link href="https://www.bezerraborges.com.br/artigos" target="_blank" rel="noopener noreferrer" className="group block h-full">
-                <article className="bg-muted/30 rounded-xl overflow-hidden border border-border hover:border-titanium/50 transition-all duration-300 hover:shadow-lg h-full flex flex-col">
-                  <div className="relative overflow-hidden">
+              <Link href="https://www.bezerraborges.com.br/artigos" target="_blank" rel="noopener noreferrer" className="group block h-full transition-transform hover:-translate-y-1">
+                <article className="h-full flex flex-col border-b border-white/10 pb-8 group hover:border-white/30 transition-all duration-500">
+                  <div className="relative aspect-video overflow-hidden rounded-2xl mb-8 border border-white/5 group-hover:border-white/20 transition-all">
                     <img
                       src={article.image || "/placeholder.svg"}
                       alt={article.title}
-                      className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover grayscale mix-blend-luminosity group-hover:scale-105 transition-transform duration-700 ease-out opacity-50 group-hover:opacity-80"
                     />
-                    <span className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm text-foreground text-xs font-medium px-3 py-1 rounded-full">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none" />
+                    <span className="absolute top-4 left-4 border border-white/10 bg-black/60 backdrop-blur-md text-white/70 text-[10px] uppercase tracking-widest font-light px-3 py-1.5 rounded-full">
                       {article.category}
                     </span>
                   </div>
-                  <div className="p-6 flex-1 flex flex-col">
-                    <div className="flex items-center gap-2 text-muted-foreground text-sm mb-3">
-                      <Clock className="h-4 w-4" />
+                  
+                  <div className="flex-1 flex flex-col items-start px-2">
+                    <div className="flex items-center gap-2 text-white/40 text-[10px] uppercase tracking-widest font-light mb-4">
+                      <Clock className="h-3 w-3" />
                       <span>{article.readTime} de leitura</span>
                     </div>
-                    <h3 className="font-semibold text-lg text-foreground mb-3 group-hover:text-titanium transition-colors">
+                    
+                    <h3 className="font-light text-lg md:text-xl mb-4 group-hover:text-white/80 transition-colors tracking-tight leading-snug text-transparent bg-clip-text bg-gradient-to-br from-white via-white/80 to-white/20">
                       {article.title}
                     </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1">{article.excerpt}</p>
-                    <span className="inline-flex items-center text-sm font-medium text-titanium group-hover:text-foreground transition-colors">
+                    
+                    <p className="text-white/40 text-[13px] md:text-sm font-light leading-relaxed mb-8 flex-1">
+                      {article.excerpt}
+                    </p>
+                    
+                    <span className="inline-flex items-center text-[10px] font-light uppercase tracking-[0.2em] text-white/50 group-hover:text-white transition-colors gap-2 mt-auto">
                       Ler artigo
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </div>
                 </article>
@@ -80,15 +92,17 @@ export function ArticlesSection() {
           ))}
         </div>
 
-        <ScrollAnimation className="text-center mt-12">
+        <ScrollAnimation className="text-center mt-16">
           <Link
             href="https://www.bezerraborges.com.br/artigos"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-titanium hover:text-foreground font-medium transition-colors"
+            className="inline-flex items-center gap-3 text-xs md:text-sm font-bold tracking-widest uppercase text-white hover:text-white/70 transition-colors"
           >
             Ver todos os artigos
-            <ArrowRight className="h-4 w-4" />
+            <span className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center bg-white/5">
+              <ArrowRight className="h-3 w-3" />
+            </span>
           </Link>
         </ScrollAnimation>
       </div>

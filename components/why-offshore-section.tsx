@@ -1,64 +1,97 @@
 "use client"
 
 import { ScrollAnimation } from "@/components/scroll-animation"
-import { Shield, Globe, Landmark, Scale, Users, LineChart } from "lucide-react"
 
-const benefits = [
+const features = [
   {
-    icon: Shield,
-    title: "Proteção Patrimonial",
-    description: "Blindagem legal contra riscos empresariais, processos e instabilidades econômicas do país de origem.",
+    tag: "PROTEÇÃO",
+    title: "Blindagem Patrimonial",
+    desc: "Separe seu patrimônio pessoal dos riscos empresariais. Uma parede legal contra processos, credores e instabilidades.",
+    image: "/international-finance-documents-global-business.jpg", 
+    isLogoBackground: false,
+    className: "md:col-span-2 aspect-[16/9] md:aspect-auto md:h-[400px]"
   },
   {
-    icon: Globe,
-    title: "Diversificação Global",
-    description: "Acesso a investimentos internacionais, moedas fortes e mercados de capitais globais.",
+    tag: "EXPANSÃO",
+    title: "Acesso a investimentos e moedas fortes",
+    desc: "Abra contas nos maiores bancos do mundo e dolarize seu capital com facilidade.",
+    image: "/world-map-with-financial-centers-global.jpg",
+    isLogoBackground: false,
+    className: "md:col-span-1 aspect-square md:aspect-auto md:h-[400px]"
   },
   {
-    icon: Landmark,
-    title: "Planejamento Tributário",
-    description: "Otimização fiscal legal através de estruturas em jurisdições com tratados favoráveis.",
+    tag: "OTIMIZAÇÃO",
+    title: "Eficiência fiscal internacional",
+    desc: "Aproveite regimes tributários favoráveis e dobre a rentabilidade do seu negócio.",
+    image: "/LogoBranco.svg", 
+    isLogoBackground: true,
+    className: "md:col-span-1 aspect-square md:aspect-auto md:h-[400px]"
   },
   {
-    icon: Scale,
-    title: "Segurança Jurídica",
-    description: "Jurisdições com sistemas jurídicos estáveis, common law e proteção ao investidor.",
-  },
-  {
-    icon: Users,
-    title: "Planejamento Sucessório",
-    description: "Facilitação da transferência de patrimônio entre gerações com menor impacto tributário.",
-  },
-  {
-    icon: LineChart,
-    title: "Expansão de Negócios",
-    description: "Estrutura para operações internacionais, importação/exportação e captação de investimentos.",
-  },
+    tag: "SUCESSÃO",
+    title: "Transferência de riqueza sem atritos",
+    desc: "Sistemas em trust ou holdings que garantem a passagem segura para a próxima geração.",
+    image: "/modern-city-skyline-at-dusk-with-glass-buildings-a.jpg",
+    isLogoBackground: false,
+    className: "md:col-span-2 aspect-[16/9] md:aspect-auto md:h-[400px]"
+  }
 ]
 
 export function WhyOffshoreSection() {
   return (
-    <section className="py-24 bg-background">
-      <div className="container mx-auto px-4 lg:px-8">
-        <ScrollAnimation className="text-center mb-16">
-          <span className="text-sm font-medium text-titanium uppercase tracking-wider">Vantagens</span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-4 text-balance">
-            Por que estruturar Offshore?
+    <section className="py-24 bg-black border-t border-white/5">
+      <div className="container mx-auto px-6 max-w-7xl">
+        <ScrollAnimation className="mb-20">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-light text-white tracking-tighter uppercase mb-6 leading-none max-w-4xl">
+            CONSTRUÍDO PARA QUEM EXIGE PROTEGER O QUE É SEU
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Descubra como uma estrutura offshore pode transformar a gestão do seu patrimônio e negócios.
-          </p>
         </ScrollAnimation>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {benefits.map((benefit, index) => (
-            <ScrollAnimation key={index} delay={index * 100}>
-              <div className="group p-8 bg-muted/30 rounded-xl border border-transparent hover:border-titanium/30 hover:bg-muted/50 transition-all duration-300">
-                <div className="w-14 h-14 rounded-lg bg-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <benefit.icon className="h-7 w-7 text-primary-foreground" />
-                </div>
-                <h3 className="font-semibold text-xl text-foreground mb-3">{benefit.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {features.map((feature, index) => (
+            <ScrollAnimation 
+              key={index} 
+              className={`group relative overflow-hidden rounded-2xl bg-[#0a0a0a] border border-white/5 shadow-2xl shadow-black hover:border-white/20 transition-all duration-300 ${feature.className}`}
+              delay={index * 100}
+            >
+              {/* Background Image / Overlay */}
+              {feature.image && !feature.isLogoBackground && (
+                <>
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 group-hover:scale-105 opacity-50 grayscale mix-blend-luminosity"
+                    style={{ backgroundImage: `url(${feature.image})` }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+                </>
+              )}
+              {feature.isLogoBackground && (
+                <>
+                  <div 
+                    className="absolute inset-0 opacity-[0.05] bg-no-repeat bg-center transition-transform duration-1000 group-hover:scale-105"
+                    style={{ 
+                      backgroundImage: `url(${feature.image})`,
+                      backgroundSize: '150% auto'
+                    }} 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                </>
+              )}
+              
+              {/* Glass Tag */}
+              <div className="absolute top-6 left-6 border border-white/10 rounded-full px-4 py-1.5 backdrop-blur-md">
+                <span className="text-white/70 text-[10px] sm:text-xs font-light tracking-widest uppercase">
+                  {feature.tag}
+                </span>
+              </div>
+
+              {/* Text Content */}
+              <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
+                <h3 className="text-white text-2xl sm:text-3xl font-light mb-3 tracking-tighter leading-tight">
+                  {feature.title}
+                </h3>
+                <p className="text-white/60 text-sm sm:text-base leading-relaxed font-light max-w-sm">
+                  {feature.desc}
+                </p>
               </div>
             </ScrollAnimation>
           ))}

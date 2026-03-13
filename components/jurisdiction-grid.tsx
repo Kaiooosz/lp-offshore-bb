@@ -56,11 +56,15 @@ export function JurisdictionGrid() {
     }
 
     return (
-        <section className="py-24 bg-muted/30" id="jurisdicoes-grade">
-            <div className="container mx-auto px-4 lg:px-8">
-                <ScrollAnimation className="text-center mb-16">
-                    <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">Jurisdições que trabalhamos</h2>
-                    <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+        <section className="py-32 bg-black relative" id="jurisdicoes-grade">
+            {/* Top/Bottom smooth gradients to blend sections instead of lines */}
+            <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0a0a0a] to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050505] to-transparent pointer-events-none" />
+
+            <div className="container mx-auto px-6 lg:px-8 relative z-10">
+                <ScrollAnimation className="text-center mb-24 max-w-3xl mx-auto">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-light mb-6 uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-white/80 to-white/20">Jurisdições que trabalhamos</h2>
+                    <p className="text-lg text-white/50 font-light leading-relaxed">
                         Já sabe o que precisa? Monte sua estrutura corporativa 100% online agora mesmo ou entre em contato com o nosso suporte para mais informações!
                     </p>
                 </ScrollAnimation>
@@ -68,27 +72,31 @@ export function JurisdictionGrid() {
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
                     {allJurisdictions.map((j, index) => (
                         <ScrollAnimation key={index} delay={index * 50}>
-                            <div className="bg-background p-6 rounded-xl border border-border flex flex-col h-full hover:border-titanium transform transition-all duration-300 hover:-translate-y-1">
-                                <div className="flex justify-between items-start mb-4">
+                            <div className="bg-[#0f0f0f]/80 p-8 rounded-2xl border border-white/5 flex flex-col h-full hover:border-white/20 hover:bg-[#141414] transform transition-all duration-500 shadow-2xl shadow-black">
+                                <div className="flex justify-between items-start mb-6">
                                     <div>
-                                        <span className="text-[10px] font-bold uppercase tracking-widest text-titanium mb-1 block">{j.country}</span>
-                                        <h3 className="text-xl font-bold text-foreground">{j.name}</h3>
+                                        <span className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-2 block">{j.country}</span>
+                                        <h3 className="text-2xl font-light tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-white via-white/80 to-white/20">{j.name}</h3>
                                     </div>
-                                    <span className="bg-muted px-2 py-1 rounded text-[10px] font-bold uppercase text-muted-foreground">{j.status}</span>
+                                    <span className="bg-white/10 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase text-white/70 tracking-widest">{j.status}</span>
                                 </div>
-                                <p className="text-sm text-muted-foreground flex-1 mb-6">{j.description}</p>
-                                <div className="flex items-center justify-between border-t border-border pt-4">
-                                    <span className="text-lg font-bold text-foreground">{j.price}</span>
+                                <p className="text-sm text-white/50 font-light flex-1 mb-8 leading-relaxed">{j.description}</p>
+                                
+                                <div className="flex flex-col gap-4 mt-auto">
+                                    <span className="text-2xl font-light text-white tracking-tighter">{j.price}</span>
                                     <Button
-                                        size="sm"
-                                        variant={j.price === "A consultar" ? "outline" : "default"}
+                                        className={`w-full rounded-full h-12 text-xs font-medium tracking-widest uppercase transition-all ${
+                                            j.price === "A consultar"
+                                                ? "bg-transparent border border-white/20 text-white hover:bg-white hover:text-black font-light tracking-[0.2em]"
+                                                : "bg-white text-black hover:bg-white/90 font-light tracking-[0.2em]"
+                                        }`}
                                         onClick={() => handleCheckout(j)}
                                         disabled={loading !== null}
                                     >
                                         {loading === j.name ? (
                                             <Loader2 className="h-4 w-4 animate-spin mr-2" />
                                         ) : null}
-                                        {j.price === "A consultar" ? "Fale com um especialista" : "Incorporar empresa"}
+                                        {j.price === "A consultar" ? "Falar com especialista" : "Incorporar empresa"}
                                     </Button>
                                 </div>
                             </div>
@@ -96,8 +104,8 @@ export function JurisdictionGrid() {
                     ))}
                 </div>
 
-                <div className="mt-16 text-center">
-                    <p className="text-sm text-muted-foreground italic">
+                <div className="mt-20 text-center">
+                    <p className="text-xs text-white/30 tracking-widest uppercase font-bold">
                         Aceitamos pagamentos com as principais criptomoedas, além de cartão e Pix.
                     </p>
                 </div>

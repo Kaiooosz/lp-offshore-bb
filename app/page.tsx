@@ -6,7 +6,6 @@ import { StepsSection } from "@/components/steps-section"
 import { JurisdictionsDetailed } from "@/components/jurisdictions-detailed"
 import { JurisdictionGrid } from "@/components/jurisdiction-grid"
 import { PricingSection } from "@/components/pricing-section"
-import { ProcessSection } from "@/components/process-section"
 import { TeamSection } from "@/components/team-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { ArticlesSection } from "@/components/articles-section"
@@ -25,7 +24,6 @@ export default function OffshoreLandingPage() {
       <JurisdictionsDetailed />
       <JurisdictionGrid />
       <PricingSection />
-      <ProcessSection />
       <TeamSection />
       <TestimonialsSection />
       <ArticlesSection />

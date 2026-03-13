@@ -84,42 +84,47 @@ export function PricingSection() {
     }
 
     return (
-        <section className="py-24 bg-background" id="consultoria">
-            <div className="container mx-auto px-4 lg:px-8">
+        <section className="py-24 bg-black relative" id="consultoria">
+            <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#050505] to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none" />
+            
+            <div className="container mx-auto px-6 max-w-7xl relative z-10">
                 <ScrollAnimation className="text-center mb-16">
-                    <span className="text-sm font-medium text-titanium uppercase tracking-wider">Planos e Consultorias</span>
-                    <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-4">
-                        A estrutura que você precisa
+                    <span className="text-xs font-bold text-white/50 uppercase tracking-widest block mb-4">Sessões Estratégicas</span>
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tighter uppercase">
+                        O NÍVEL DE PROFUNDIDADE QUE VOCÊ PRECISA
                     </h2>
-                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Escolha o nível de profundidade ideal para o seu momento atual. Nosso compromisso é com o seu sucesso.
+                    <p className="text-lg text-white/50 max-w-2xl mx-auto font-light leading-relaxed">
+                        Nossos arquitetos legais desenham soluções para o seu contexto específico.
                     </p>
                 </ScrollAnimation>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {plans.map((plan, index) => (
                         <ScrollAnimation key={index} delay={index * 100}>
-                            <div className={`relative flex flex-col h-full p-8 rounded-2xl border ${plan.highlight ? "border-titanium shadow-xl bg-muted/20" : "border-border bg-background"} transition-all duration-300 hover:shadow-2xl`}>
+                            <div className={`relative flex flex-col h-full p-8 md:p-10 rounded-2xl border ${plan.highlight ? "border-white/20 bg-gradient-to-b from-[#141414] to-black shadow-2xl shadow-black" : "border-white/5 bg-[#0a0a0a]"} transition-all duration-300 hover:border-white/30 shadow-2xl shadow-black`}>
                                 {plan.highlight && (
-                                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-titanium text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-widest">
-                                        Mais Vendido
+                                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-black text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
+                                        Recomendado
                                     </div>
                                 )}
 
                                 <div className="mb-8">
-                                    <span className="text-xs font-bold text-titanium uppercase tracking-widest block mb-2">{plan.subtitle}</span>
-                                    <h3 className="text-2xl font-bold text-foreground mb-4">{plan.name}</h3>
-                                    <div className="text-4xl font-serif font-bold text-foreground mb-4">{plan.price}</div>
-                                    <p className="text-sm text-muted-foreground leading-relaxed">
+                                    <span className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] block mb-2">{plan.subtitle}</span>
+                                    <h3 className="text-2xl font-light text-white mb-6 tracking-tight">{plan.name}</h3>
+                                    <div className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tighter">{plan.price}</div>
+                                    <p className="text-sm text-white/50 leading-relaxed font-light">
                                         {plan.description}
                                     </p>
                                 </div>
 
-                                <div className="flex-1 mb-8">
+                                <div className="flex-1 mb-10">
                                     <ul className="space-y-4">
                                         {plan.features.map((feature, i) => (
-                                            <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground leading-snug">
-                                                <Check className="h-5 w-5 text-titanium mt-0.5 shrink-0" />
+                                            <li key={i} className="flex items-start gap-4 text-sm text-white/60 leading-relaxed font-light">
+                                                <div className="mt-0.5 w-5 h-5 rounded-full bg-white/10 flex items-center justify-center shrink-0 border border-white/5">
+                                                  <Check className="h-3 w-3 text-white" />
+                                                </div>
                                                 <span>{feature}</span>
                                             </li>
                                         ))}
@@ -129,7 +134,7 @@ export function PricingSection() {
                                 <div className="mt-auto space-y-4">
                                     <Button
                                         size="lg"
-                                        className={`w-full ${plan.highlight ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-muted/80"}`}
+                                        className={`w-full rounded-full h-14 text-[10px] font-light tracking-[0.2em] uppercase transition-all ${plan.highlight ? "bg-white text-black hover:bg-white/90" : "bg-transparent border border-white/20 text-white hover:bg-white hover:text-black"}`}
                                         onClick={() => handleCheckout(plan)}
                                         disabled={loading !== null}
                                     >
@@ -138,9 +143,9 @@ export function PricingSection() {
                                         ) : null}
                                         {plan.buttonText}
                                     </Button>
-                                    <div className="flex items-center gap-2 justify-center text-[10px] text-muted-foreground text-center italic">
+                                    <div className="flex items-center gap-2 justify-center text-[10px] text-white/30 text-center uppercase tracking-wider font-bold">
                                         <Info className="h-3 w-3" />
-                                        <span>Valor reembolsável em formato de Cupom de Desconto</span>
+                                        <span>Valor 100% reembolsável no serviço final</span>
                                     </div>
                                 </div>
                             </div>

@@ -30,32 +30,32 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground border-t border-primary-foreground/10">
-      <div className="container mx-auto px-4 lg:px-8 py-16">
+    <footer className="bg-black text-white border-t border-white/10">
+      <div className="container mx-auto px-6 max-w-7xl py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center">
+          <div className="lg:col-span-2 space-y-6">
+            <Link href="/" className="inline-block">
               <img
-                src="/Logofundopreto.png"
-                alt="Offshore Logo"
-                className="h-22 w-auto object-contain"
+                src="/LogoBranco.svg"
+                alt="Borges Bezerra Logo"
+                className="h-28 sm:h-36 w-auto object-contain"
               />
             </Link>
-            <p className="text-primary-foreground/60 leading-relaxed mb-6 max-w-sm">
-              Especialistas em estruturação offshore para proteção patrimonial e expansão internacional do seu negócio.
+            <p className="text-white/40 leading-relaxed max-w-xs font-light tracking-wide text-sm">
+              Especialistas em estruturação offshore para proteção patrimonial e expansão financeira global.
             </p>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 pt-4">
               {socialLinks.map((social, index) => (
                 <Link
                   key={index}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors"
+                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all"
                   aria-label={social.label}
                 >
-                  <social.icon className="h-5 w-5" />
+                  <social.icon className="h-4 w-4" />
                 </Link>
               ))}
             </div>
@@ -63,13 +63,13 @@ export function Footer() {
 
           {/* Links */}
           <div>
-            <h3 className="font-semibold mb-4">Serviços</h3>
-            <ul className="space-y-3">
+            <h3 className="text-xs font-bold text-white/50 uppercase tracking-widest mb-6">Serviços</h3>
+            <ul className="space-y-4">
               {footerLinks.servicos.map((link, index) => (
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="text-primary-foreground/60 hover:text-primary-foreground transition-colors text-sm"
+                    className="text-white/70 hover:text-white transition-colors text-sm font-light"
                   >
                     {link.label}
                   </Link>
@@ -79,13 +79,13 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Recursos</h3>
-            <ul className="space-y-3">
+            <h3 className="text-xs font-bold text-white/50 uppercase tracking-widest mb-6">Recursos</h3>
+            <ul className="space-y-4">
               {footerLinks.recursos.map((link, index) => (
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="text-primary-foreground/60 hover:text-primary-foreground transition-colors text-sm"
+                    className="text-white/70 hover:text-white transition-colors text-sm font-light"
                   >
                     {link.label}
                   </Link>
@@ -95,18 +95,18 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Empresa</h3>
-            <ul className="space-y-3">
+            <h3 className="text-xs font-bold text-white/50 uppercase tracking-widest mb-6">Empresa</h3>
+            <ul className="space-y-4">
               {footerLinks.empresa.map((link, index) => (
                 <li key={index}>
                   <Link
                     href={link.href}
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noopener noreferrer" : undefined}
-                    className="text-primary-foreground/60 hover:text-primary-foreground transition-colors text-sm inline-flex items-center gap-1"
+                    className="text-white/70 hover:text-white transition-colors text-sm font-light flex items-center gap-2 group"
                   >
                     {link.label}
-                    {link.external && <ExternalLink className="h-3 w-3" />}
+                    {link.external && <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />}
                   </Link>
                 </li>
               ))}
@@ -115,16 +115,16 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-16 pt-8 border-t border-primary-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-primary-foreground/40">
-            © {new Date().getFullYear()} Escritório. Todos os direitos reservados.
+        <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-xs text-white/40 tracking-widest uppercase">
+            © {new Date().getFullYear()} BORGES BEZERRA OFFSHORE. Todos os direitos reservados.
           </p>
-          <div className="flex items-center gap-6 text-sm text-primary-foreground/40">
-            <Link href="#" className="hover:text-primary-foreground transition-colors">
-              Política de Privacidade
+          <div className="flex items-center gap-8 text-xs text-white/40 tracking-widest uppercase">
+            <Link href="#" className="hover:text-white transition-colors">
+              Privacidade
             </Link>
-            <Link href="#" className="hover:text-primary-foreground transition-colors">
-              Termos de Uso
+            <Link href="#" className="hover:text-white transition-colors">
+              Termos
             </Link>
           </div>
         </div>

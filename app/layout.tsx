@@ -1,11 +1,13 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Playfair_Display } from "next/font/google"
+import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
-const _inter = Inter({ subsets: ["latin"] })
-const _playfair = Playfair_Display({ subsets: ["latin"] })
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: '--font-sans',
+})
 
 export const metadata: Metadata = {
   title: "Offshore | Internacionalização de Patrimônio",
@@ -22,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="scroll-smooth" suppressHydrationWarning>
-      <body className="font-sans antialiased">
+      <body className={`${inter.variable} font-sans antialiased text-foreground bg-background`}>
         {children}
         <Analytics />
       </body>

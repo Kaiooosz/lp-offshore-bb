@@ -1,71 +1,64 @@
 "use client"
 
 import { ScrollAnimation } from "@/components/scroll-animation"
-import { Check, X } from "lucide-react"
+import { ShieldAlert, Globe2, Wallet2, FileLock2, Briefcase, LineChart } from "lucide-react"
 
-const objections = [
+const features = [
   {
-    myth: "Offshore é ilegal",
-    truth: "Estruturas offshore são 100% legais quando declaradas corretamente à Receita Federal",
-    icon: "legal",
+    icon: ShieldAlert,
+    title: "Blindagem Patrimonial",
+    desc: "Separe seu patrimônio pessoal dos riscos empresariais. Uma parede legal contra processos, credores e instabilidades."
   },
   {
-    myth: "Só serve para sonegar impostos",
-    truth: "É uma ferramenta de planejamento tributário legal, utilizada por grandes empresas globais",
-    icon: "tax",
+    icon: Wallet2,
+    title: "Otimização Fiscal",
+    desc: "Aproveite jurisdições com impostos reduzidos ou zerados sobre ganhos de capital, dividendos e renda global."
   },
   {
-    myth: "É muito complexo de administrar",
-    truth: "Com assessoria especializada, a gestão é simples e totalmente delegável",
-    icon: "simple",
+    icon: Globe2,
+    title: "Diversificação Global",
+    desc: "Contas multimoedas nos maiores bancos do mundo e acesso a investimentos restritos ao mercado internacional."
   },
   {
-    myth: "Precisa de muito dinheiro",
-    truth: "Existem estruturas adequadas para diferentes perfis de patrimônio",
-    icon: "money",
+    icon: FileLock2,
+    title: "Confidencialidade",
+    desc: "Proteja sua identidade. Em jurisdições específicas, diretores e acionistas não constam em registros públicos (anonimato total)."
   },
+  {
+    icon: Briefcase,
+    title: "Planejamento Sucessório",
+    desc: "Evite inventários demorados e custos tributários altos na transferência de patrimônio para seus herdeiros através de Trusts ou Holdings."
+  },
+  {
+    icon: LineChart,
+    title: "Expansão Operacional",
+    desc: "Contrate gateways de pagamentos globais, importe e exporte de forma eficiente utilizando hubs financeiros internacionais."
+  }
 ]
 
 export function ObjectionsSection() {
   return (
-    <section className="py-24 bg-muted/30" id="beneficios">
-      <div className="container mx-auto px-4 lg:px-8">
-        <ScrollAnimation className="text-center mb-16">
-          <span className="text-sm font-medium text-titanium uppercase tracking-wider">Desmistificando</span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-4 text-balance">
-            Quebrando objeções sobre Offshore
+    <section className="py-24 bg-black" id="beneficios">
+      <div className="container mx-auto px-6 max-w-7xl">
+        <ScrollAnimation className="mb-24 max-w-2xl">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tighter uppercase leading-tight text-transparent bg-clip-text bg-gradient-to-br from-white via-white/80 to-white/20">
+            CONSTRUÍDO PARA QUEM EXIGE PROTEGER O QUE É SEU
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Entenda a verdade por trás dos mitos mais comuns e tome decisões baseadas em fatos.
-          </p>
         </ScrollAnimation>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          {objections.map((item, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-12">
+          {features.map((item, index) => (
             <ScrollAnimation key={index} delay={index * 100}>
-              <div className="bg-background rounded-xl p-6 border border-border hover:border-titanium/50 transition-all duration-300 hover:shadow-lg group">
-                <div className="flex items-start gap-4">
-                  <div className="shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-destructive/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <X className="h-6 w-6 text-destructive" />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-foreground mb-1 line-through decoration-destructive/50">
-                      {item.myth}
-                    </h3>
-                  </div>
+              <div className="flex flex-col items-start text-left h-full pb-8 border-b border-white/10 group">
+                <div className="w-12 h-12 rounded-full bg-[#0a0a0a] flex items-center justify-center mb-8 border border-white/5 shadow-lg group-hover:border-white/20 transition-all duration-300">
+                  <item.icon className="h-5 w-5 text-white/70" />
                 </div>
-                <div className="flex items-start gap-4 mt-4 pt-4 border-t border-border">
-                  <div className="shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Check className="h-6 w-6 text-green-600" />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-muted-foreground leading-relaxed">{item.truth}</p>
-                  </div>
-                </div>
+                <h3 className="font-light text-xl text-white mb-4 tracking-tight">
+                  {item.title}
+                </h3>
+                <p className="text-white/50 text-sm leading-relaxed font-light">
+                  {item.desc}
+                </p>
               </div>
             </ScrollAnimation>
           ))}
