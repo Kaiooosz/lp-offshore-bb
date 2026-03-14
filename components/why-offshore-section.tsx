@@ -43,7 +43,7 @@ export function WhyOffshoreSection() {
       <div className="container mx-auto px-6 max-w-7xl">
         <ScrollAnimation className="mb-20">
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-light text-white tracking-tighter uppercase mb-6 leading-none max-w-4xl">
-            CONSTRUÍDO PARA QUEM EXIGE PROTEGER O QUE É SEU
+            BLINDAGEM COMPLETA PARA UM MUNDO SEM FRONTEIRAS
           </h2>
         </ScrollAnimation>
 

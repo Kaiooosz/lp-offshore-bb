@@ -9,7 +9,7 @@ const team = [
     name: "Dr. Vinicius",
     role: "Sócio Fundador",
     specialty: "Direito Internacional e Tributário",
-    image: "/vinicius 1.jpg",
+    image: "/vinicius.jpg",
     linkedin: "#",
   },
   {

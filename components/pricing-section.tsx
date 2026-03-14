@@ -9,9 +9,9 @@ import { getStripe } from "@/lib/stripe-client"
 const plans = [
     {
         name: "Consulta com Contador",
-        subtitle: "ECONÔMICO",
-        price: "US$ 20",
-        amount: 2000,
+        subtitle: "INTRODUTÓRIO",
+        price: "US$ 100",
+        amount: 10000,
         priceId: "price_1TAElnFsbLGLnQ7wjhz7dkYI",
         description: "Sessão de 30 min para tirar dúvidas com o especialista contábil offshore.",
         features: [
@@ -46,7 +46,7 @@ const plans = [
         priceId: "price_1TAEo2FsbLGLnQ7wWY7GSzjg",
         description: "Sessão de 2h para elaborar estratégia de otimização tributária e proteção jurídica no Brasil.",
         features: [
-            "Blindagem patrimonial no Brasil",
+            "Planejamento Proteção Patrimonial no Brasil",
             "Otimização fiscal nacional",
             "Integração com offshore",
             "Valor 100% reembolsável ao fechar plano de abertura",
@@ -89,13 +89,13 @@ export function PricingSection() {
             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none" />
             
             <div className="container mx-auto px-6 max-w-7xl relative z-10">
-                <ScrollAnimation className="text-center mb-16">
-                    <span className="text-xs font-bold text-white/50 uppercase tracking-widest block mb-4">Sessões Estratégicas</span>
-                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tighter uppercase">
-                        O NÍVEL DE PROFUNDIDADE QUE VOCÊ PRECISA
+                <ScrollAnimation className="mb-16">
+                    <span className="text-xs font-light text-white/50 uppercase tracking-[0.2em] block mb-4">Consultoria Estratégica</span>
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-light tracking-tighter uppercase mb-6 text-transparent bg-clip-text bg-gradient-to-br from-white via-white/80 to-white/20">
+                        O PRIMEIRO PASSO PARA PROTEGER O QUE É SEU
                     </h2>
-                    <p className="text-lg text-white/50 max-w-2xl mx-auto font-light leading-relaxed">
-                        Nossos arquitetos legais desenham soluções para o seu contexto específico.
+                    <p className="text-lg text-white/50 max-w-2xl font-light leading-relaxed">
+                        Antes de estruturar qualquer offshore, entenda exatamente o que faz sentido para o seu caso. Nossas sessões de consultoria são o ponto de partida para quem leva a sério a proteção patrimonial.
                     </p>
                 </ScrollAnimation>
 
@@ -112,7 +112,10 @@ export function PricingSection() {
                                 <div className="mb-8">
                                     <span className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] block mb-2">{plan.subtitle}</span>
                                     <h3 className="text-2xl font-light text-white mb-6 tracking-tight">{plan.name}</h3>
-                                    <div className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tighter">{plan.price}</div>
+                                    <div className="flex flex-col mb-6">
+                                        <span className="text-[10px] font-light text-white/40 uppercase tracking-[0.2em] mb-1">a partir de</span>
+                                        <div className="text-4xl md:text-5xl font-light text-white tracking-tighter">{plan.price}</div>
+                                    </div>
                                     <p className="text-sm text-white/50 leading-relaxed font-light">
                                         {plan.description}
                                     </p>

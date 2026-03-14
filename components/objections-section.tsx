@@ -6,7 +6,7 @@ import { ShieldAlert, Globe2, Wallet2, FileLock2, Briefcase, LineChart } from "l
 const features = [
   {
     icon: ShieldAlert,
-    title: "Blindagem Patrimonial",
+    title: "Planejamento Proteção Patrimonial",
     desc: "Separe seu patrimônio pessoal dos riscos empresariais. Uma parede legal contra processos, credores e instabilidades."
   },
   {
