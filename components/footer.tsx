@@ -23,7 +23,7 @@ const footerLinks = {
   empresa: [
     { label: "Sobre nós", href: "#equipe" },
     { label: "Equipe", href: "#equipe" },
-    { label: "Contato", href: "https://api.whatsapp.com/send/?phone=5511982712025&text=Ol%C3%A1%2C+gostaria+de+agendar+um+diagn%C3%B3stico+estrat%C3%A9gico+com+a+Bezerra+Borges+Advogados", external: true },
+    { label: "Contato", href: "https://api.whatsapp.com/send/?phone=5521979901686&text=Ol%C3%A1%2C+gostaria+de+agendar+um+diagn%C3%B3stico+estrat%C3%A9gico+com+a+Bezerra+Borges+Advogados", external: true },
     { label: "", href: "https://www.bezerraborges.com.br", external: true },
   ],
 }

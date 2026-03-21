@@ -28,7 +28,7 @@ export function JurisdictionGrid() {
 
     const handleCheckout = async (j: typeof allJurisdictions[0]) => {
         if (j.price === "A consultar") {
-            window.open(`https://api.whatsapp.com/send/?phone=5511982712025&text=Olá, gostaria de saber mais sobre a jurisdição de ${j.name}`, "_blank")
+            window.open(`https://api.whatsapp.com/send/?phone=5521979901686&text=Olá, gostaria de saber mais sobre a jurisdição de ${j.name}`, "_blank")
             return
         }
 

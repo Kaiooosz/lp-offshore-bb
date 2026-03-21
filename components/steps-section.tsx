@@ -29,7 +29,7 @@ export function StepsSection() {
             <p className="text-white/50 text-xl md:text-2xl font-light max-w-xl leading-relaxed mb-8 mx-auto md:mx-0">
               Desenvolvido para empresários que movimentam alto volume de capital e exigem estruturas multi-jurisdicionais complexas.
             </p>
-            <a href="https://api.whatsapp.com/send/?phone=5511982712025&text=Olá, tenho interesse na estruturação Bezerra Borges Para Grandes Volumes" target="_blank" rel="noreferrer" className="btn-shimmer inline-flex items-center justify-center text-white text-[10px] font-light tracking-[0.2em] uppercase hover:opacity-70 transition-opacity bg-transparent border border-white/30 px-8 py-4 rounded-full">
+            <a href="https://api.whatsapp.com/send/?phone=5521979901686&text=Olá, tenho interesse na estruturação Bezerra Borges Para Grandes Volumes" target="_blank" rel="noreferrer" className="btn-shimmer inline-flex items-center justify-center text-white text-[10px] font-light tracking-[0.2em] uppercase hover:opacity-70 transition-opacity bg-transparent border border-white/30 px-8 py-4 rounded-full">
               Falar com Sócio Diretor <span className="ml-2">→</span>
             </a>
           </div>

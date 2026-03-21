@@ -63,10 +63,10 @@ export function HeroSection() {
         
         {/* Main Titles */}
         <div className="text-center mb-12 animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000">
-          <h1 className="text-4xl sm:text-6xl lg:text-[7.5rem] font-light text-white leading-[0.85] tracking-tighter mb-4">
+          <h1 className="text-4xl sm:text-6xl lg:text-[6rem] font-light leading-[0.9] tracking-tighter mb-4 text-transparent bg-clip-text bg-gradient-to-br from-white via-white/90 to-white/20">
             É UM MUNDO<br />SELVAGEM.
           </h1>
-          <h2 className="text-xl sm:text-4xl lg:text-7xl font-light text-white/50 tracking-tighter">
+          <h2 className="text-xl sm:text-3xl lg:text-6xl font-light tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white/50 via-white/30 to-white/10">
             PROTEJA SEU PATRIMÔNIO.
           </h2>
         </div>

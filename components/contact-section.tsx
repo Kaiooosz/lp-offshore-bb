@@ -40,12 +40,12 @@ export function ContactSection() {
                 </span>
               </a>
 
-              <a href="tel:+5511982712025" className="flex flex-col items-start p-10 border-r border-b border-white/10 group hover:bg-white/5 transition-colors">
+              <a href="tel:+5521979901686" className="flex flex-col items-start p-10 border-r border-b border-white/10 group hover:bg-white/5 transition-colors">
                 <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center shrink-0 mb-8 bg-[#0a0a0a] group-hover:border-white/30 transition-all">
                   <Phone className="h-5 w-5 text-white/50 group-hover:text-white transition-colors" />
                 </div>
                 <h3 className="font-light text-xl text-white mb-2 tracking-tight">Ligue para nós</h3>
-                <p className="text-sm font-light text-white/50 mb-8">+55 (11) 98271-2025</p>
+                <p className="text-sm font-light text-white/50 mb-8">+55 (21) 97990-1686</p>
                 <span className="text-[10px] font-light text-white/40 uppercase tracking-[0.2em] mt-auto flex items-center gap-2 group-hover:text-white transition-colors">
                   Ligar <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </span>
@@ -62,7 +62,7 @@ export function ContactSection() {
                 </span>
               </a>
 
-              <a href="https://api.whatsapp.com/send/?phone=5511982712025&text=Olá, gostaria de agendar um diagnóstico estratégico com a Bezerra Borges Advogados" target="_blank" rel="noreferrer" className="flex flex-col items-start p-10 border-r border-b border-white/10 group hover:bg-white/5 transition-colors">
+              <a href="https://api.whatsapp.com/send/?phone=5521979901686&text=Olá, gostaria de agendar um diagnóstico estratégico com a Bezerra Borges Advogados" target="_blank" rel="noreferrer" className="flex flex-col items-start p-10 border-r border-b border-white/10 group hover:bg-white/5 transition-colors">
                 <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center shrink-0 mb-8 bg-[#0a0a0a] group-hover:border-white/30 transition-all">
                   <MessageCircle className="h-5 w-5 text-white/50 group-hover:text-white transition-colors" />
                 </div>

@@ -11,7 +11,7 @@ const navLinks = [
   { href: "#jurisdicoes-grade", label: "Jurisdições" },
   { href: "#consultoria", label: "Consultoria" },
   { href: "#equipe", label: "Equipe" },
-  { href: "https://api.whatsapp.com/send/?phone=5511982712025&text=Olá, gostaria de agendar um diagnóstico estratégico com a Bezerra Borges Advogados", label: "Contato" },
+  { href: "https://api.whatsapp.com/send/?phone=5521979901686&text=Olá, gostaria de agendar um diagnóstico estratégico com a Bezerra Borges Advogados", label: "Contato" },
 ]
 
 export function Header() {

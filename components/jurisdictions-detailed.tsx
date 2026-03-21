@@ -24,7 +24,7 @@ const jurisdictions = [
         ],
         price: "A partir de US$ 6.500",
         buttonText: "Falar com Especialista",
-        href: "https://api.whatsapp.com/send/?phone=5511982712025&text=Olá, gostaria de saber mais sobre a estrutura de Dubai.",
+        href: "https://api.whatsapp.com/send/?phone=5521979901686&text=Olá, gostaria de saber mais sobre a estrutura de Dubai.",
     },
     {
         id: "usa",
@@ -112,7 +112,7 @@ export function JurisdictionsDetailed() {
                 setLoading(null)
             }
         } else {
-            window.open((j as any).href || `https://api.whatsapp.com/send/?phone=5511982712025&text=Olá, gostaria de saber mais sobre a estrutura de ${j.name}`, "_blank")
+            window.open((j as any).href || `https://api.whatsapp.com/send/?phone=5521979901686&text=Olá, gostaria de saber mais sobre a estrutura de ${j.name}`, "_blank")
         }
     }
 
