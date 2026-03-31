@@ -42,7 +42,7 @@ const jurisdictions = [
         ],
         price: "US$ 990",
         amount: 99000,
-        priceId: "price_1T9b87FsbLGLnQ7woJUUeV9p", // Wyoming as default
+        priceId: "price_1TF0fvGmjEN0TRBb9tXpPiUs", // Wyoming como padrão
         buttonText: "Iniciar abertura nos EUA",
         note: "Atenção: para ter direito à isenção de impostos, a empresa deve possuir apenas um sócio e esse sócio não pode residir nos Estados Unidos. Além disso, a empresa não pode vender para clientes americanos nem contratar funcionários americanos.",
     },
@@ -61,7 +61,7 @@ const jurisdictions = [
         ],
         price: "US$ 2.900",
         amount: 290000,
-        priceId: "price_1T9bE6FsbLGLnQ7w16ApKUur",
+        priceId: "price_1TF0eMGmjEN0TRBbAp1DyNuX",
         buttonText: "Iniciar abertura em Névis",
     },
     {
@@ -80,7 +80,7 @@ const jurisdictions = [
         ],
         price: "US$ 2.900",
         amount: 290000,
-        priceId: "price_1T9bEpFsbLGLnQ7wU6a1rzBy",
+        priceId: "price_1TF0djGmjEN0TRBbVTqgmq9P",
         buttonText: "Iniciar abertura nas Bahamas",
     },
 ]
