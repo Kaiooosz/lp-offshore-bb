@@ -10,10 +10,10 @@ const plans = [
     {
         name: "Consulta com Contador",
         subtitle: "INTRODUTÓRIO",
-        price: "US$ 100",
-        amount: 10000,
-        priceId: "price_1TAElnFsbLGLnQ7wjhz7dkYI",
-        description: "Sessão de 30 min para tirar dúvidas com o especialista contábil offshore.",
+        price: "US$ 20",
+        amount: 2000,
+        priceId: "price_1TF0UvGmjEN0TRBbE59OSGqm",
+        description: "Consulta com Contador – sessão de 30 min para tirar dúvidas com o especialista contábil offshore.",
         features: [
             "Tire dúvidas pontuais",
             "Análise rápida de viabilidade",
@@ -27,7 +27,7 @@ const plans = [
         subtitle: "ESTRATÉGICO",
         price: "US$ 119",
         amount: 11900,
-        priceId: "price_1TAEnHFsbLGLnQ7wrFLKyNnX",
+        priceId: "price_1TF0USGmjEN0TRBbqiFflRKV",
         description: "Sessão de 2h para a criação e execução de estratégia offshore personalizada.",
         features: [
             "Planejamento jurisdicional completo",
@@ -43,7 +43,7 @@ const plans = [
         subtitle: "MAIS VENDIDO",
         price: "US$ 149",
         amount: 14900,
-        priceId: "price_1TAEo2FsbLGLnQ7wWY7GSzjg",
+        priceId: "price_1TF0TkGmjEN0TRBbCBr7bkEv",
         description: "Sessão de 2h para elaborar estratégia de otimização tributária e proteção jurídica no Brasil.",
         features: [
             "Planejamento Proteção Patrimonial no Brasil",
@@ -52,6 +52,22 @@ const plans = [
             "Valor 100% reembolsável ao fechar plano de abertura",
         ],
         highlight: true,
+        buttonText: "Contratar Agora",
+    },
+    {
+        name: "Consultoria Estratégica Holding",
+        subtitle: "PREMIUM",
+        price: "US$ 125",
+        amount: 12500,
+        priceId: "price_1TF0SqGmjEN0TRBbDFn1z7Wb",
+        description: "Sessão exclusiva de 60 minutos com especialista para análise inicial do patrimônio e identificação das melhores estratégias de estruturação.",
+        features: [
+            "Análise inicial do patrimônio",
+            "Identificação de estratégias de estruturação",
+            "Planejamento sucessório e proteção de ativos",
+            "Valor 100% reembolsável ao fechar plano de abertura",
+        ],
+        highlight: false,
         buttonText: "Contratar Agora",
     },
 ]
@@ -99,7 +115,7 @@ export function PricingSection() {
                     </p>
                 </ScrollAnimation>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {plans.map((plan, index) => (
                         <ScrollAnimation key={index} delay={index * 100}>
                             <div className={`relative flex flex-col h-full p-8 md:p-10 rounded-2xl border ${plan.highlight ? "border-white/20 bg-gradient-to-b from-[#141414] to-black shadow-2xl shadow-black" : "border-white/5 bg-[#0a0a0a]"} transition-all duration-300 hover:border-white/30 shadow-2xl shadow-black`}>
