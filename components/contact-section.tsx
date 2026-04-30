@@ -131,7 +131,7 @@ export function ContactSection() {
                     <Loader2 className="h-4 w-4 animate-spin" />
                   ) : (
                     <>
-                      Preencha seu Formulário
+                      Contratar Consultoria
                       <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
                     </>
                   )}
