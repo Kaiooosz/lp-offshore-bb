@@ -21,7 +21,8 @@ export async function POST(req: Request) {
       name: nome,
       email,
       phone: telefone,
-      message: `[Offshore] Patrimônio: ${patrimonio || "não informado"}${mensagem ? ` | ${mensagem}` : ""}`,
+      message: `Patrimônio: ${patrimonio || "não informado"}${mensagem ? ` | ${mensagem}` : ""}`,
+      fonte: "Landing Page Offshore",
     }
 
     const response = await fetch(scriptUrl, {
