@@ -5,10 +5,24 @@ export async function POST(req: Request) {
   try {
     const { priceId, amount, name } = await req.json()
 
+    let targetPriceId = priceId
+
+    if (priceId && priceId.startsWith("prod_")) {
+      const prices = await stripe.prices.list({
+        product: priceId,
+        active: true,
+        limit: 1,
+      })
+      if (prices.data.length === 0) {
+        return NextResponse.json({ error: "Nenhum preço ativo encontrado para este produto." }, { status: 400 })
+      }
+      targetPriceId = prices.data[0].id
+    }
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
-      line_items: priceId
-        ? [{ price: priceId, quantity: 1 }]
+      line_items: targetPriceId
+        ? [{ price: targetPriceId, quantity: 1 }]
         : [
             {
               price_data: {
@@ -16,7 +30,7 @@ export async function POST(req: Request) {
                 product_data: {
                   name: name || "Consultoria BBLAW",
                 },
-                unit_amount: amount, // amount in cents
+                unit_amount: amount,
               },
               quantity: 1,
             },

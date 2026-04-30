@@ -4,6 +4,8 @@ import { useState } from "react"
 import { ScrollAnimation } from "@/components/scroll-animation"
 import { ArrowRight, MessageCircle, CheckCircle, Loader2 } from "lucide-react"
 
+const STRIPE_PRODUCT_ID = "prod_UQt5dYJOG1ANiX"
+
 const WHATSAPP_URL =
   "https://api.whatsapp.com/send/?phone=5521979901686&text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20estruturação%20offshore%20com%20a%20Bezerra%20Borges%20Advogados"
 
@@ -24,6 +26,27 @@ const PATRIMONIO_OPTIONS = [
 export function ContactSection() {
   const [form, setForm] = useState({ nome: "", email: "", telefone: "", patrimonio: "", mensagem: "" })
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+  const [checkoutLoading, setCheckoutLoading] = useState(false)
+  const [checkoutError, setCheckoutError] = useState<string | null>(null)
+
+  async function handleCheckout() {
+    setCheckoutLoading(true)
+    setCheckoutError(null)
+    try {
+      const res = await fetch("/api/stripe/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ priceId: STRIPE_PRODUCT_ID }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || "Erro ao iniciar pagamento")
+      if (data.url) window.location.href = data.url
+    } catch (err: any) {
+      setCheckoutError(err.message)
+    } finally {
+      setCheckoutLoading(false)
+    }
+  }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -98,16 +121,34 @@ export function ContactSection() {
                 </p>
               </div>
 
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="group flex items-center justify-center gap-3 w-full bg-white text-black py-4 px-6 text-[11px] font-light uppercase tracking-[0.2em] hover:bg-white/90 transition-colors"
-              >
-                <MessageCircle className="h-4 w-4" />
-                Agendar via WhatsApp
-                <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
-              </a>
+              <div className="flex flex-col gap-2">
+                <button
+                  onClick={handleCheckout}
+                  disabled={checkoutLoading}
+                  className="group flex items-center justify-center gap-3 w-full bg-white text-black py-4 px-6 text-[11px] font-light uppercase tracking-[0.2em] hover:bg-white/90 transition-colors disabled:opacity-60"
+                >
+                  {checkoutLoading ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <>
+                      Preencha seu Formulário
+                      <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
+                </button>
+                {checkoutError && (
+                  <p className="text-xs text-red-400/70 font-light text-center">{checkoutError}</p>
+                )}
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex items-center justify-center gap-3 w-full border border-white/20 text-white py-4 px-6 text-[11px] font-light uppercase tracking-[0.2em] hover:bg-white/5 transition-colors"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  Agendar via WhatsApp
+                </a>
+              </div>
 
               <div className="grid grid-cols-2 gap-px border border-white/10 bg-white/10">
                 <div className="bg-black px-4 py-3">
