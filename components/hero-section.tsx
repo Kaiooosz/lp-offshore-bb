@@ -1,12 +1,10 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
-import Link from "next/link"
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
-  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -27,28 +25,9 @@ export function HeroSection() {
     return () => observer.disconnect()
   }, [])
 
-  const handleConsultationCheckout = async () => {
-    try {
-      setLoading(true)
-      const response = await fetch("/api/stripe/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          amount: 2000,
-          name: "Consulta com Contador - BBLAW",
-          priceId: "price_1TAElnFsbLGLnQ7wjhz7dkYI",
-        }),
-      })
-
-      const { url, error } = await response.json()
-      if (error) throw new Error(error)
-      if (url) window.location.href = url
-    } catch (error) {
-      console.error("Hero checkout error:", error)
-      alert("Erro ao iniciar agendamento. Tente novamente.")
-    } finally {
-      setLoading(false)
-    }
+  const handleConsultationCheckout = () => {
+    const section = document.getElementById("consultoria")
+    if (section) section.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
@@ -73,7 +52,7 @@ export function HeroSection() {
 
         {/* Subtitle */}
         <p className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000 delay-200 text-lg md:text-xl text-white/40 max-w-2xl text-center mb-12 leading-relaxed tracking-wide font-light">
-          Consultoria jurídica de elite para proteção patrimonial internacional, otimização tributária e estruturação de holdings globais.
+          Para empresários com faturamento acima de R$ 500 mil/ano ou patrimônio investível no exterior — estruturamos a blindagem jurídica e tributária que protege o que voce construiu.
         </p>
 
         {/* CTA */}
@@ -81,9 +60,8 @@ export function HeroSection() {
           <Button
             className="btn-shimmer bg-transparent hover:bg-white text-white hover:text-black rounded-full px-12 py-8 text-sm font-light tracking-widest uppercase transition-all border border-white/30 backdrop-blur-md"
             onClick={handleConsultationCheckout}
-            disabled={loading}
           >
-            {loading ? "AGUARDE..." : "INICIAR AGORA"}
+            AGENDAR CONSULTORIA
           </Button>
         </div>
 

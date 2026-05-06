@@ -8,64 +8,51 @@ import { getStripe } from "@/lib/stripe-client"
 
 const plans = [
     {
-        name: "Consulta com Contador",
-        subtitle: "INTRODUTÓRIO",
-        price: "US$ 20",
-        amount: 2000,
-        priceId: "price_1TF0UvGmjEN0TRBbE59OSGqm",
-        description: "Consulta com Contador – sessão de 30 min para tirar dúvidas com o especialista contábil offshore.",
-        features: [
-            "Tire dúvidas pontuais",
-            "Análise rápida de viabilidade",
-            "Valor 100% reembolsável ao fechar plano de abertura",
-        ],
-        highlight: false,
-        buttonText: "Contratar Agora",
-    },
-    {
-        name: "Estratégia Offshore",
-        subtitle: "ESTRATÉGICO",
+        name: "Diagnóstico Offshore",
+        subtitle: "ENTRADA",
         price: "US$ 119",
         amount: 11900,
         priceId: "price_1TF0USGmjEN0TRBbqiFflRKV",
-        description: "Sessão de 2h para a criação e execução de estratégia offshore personalizada.",
+        description: "Sessão de 1h para análise do seu perfil patrimonial e identificação da jurisdição ideal para o seu caso.",
         features: [
-            "Planejamento jurisdicional completo",
-            "Estruturação societária avançada",
-            "Definição de fluxos financeiros",
-            "Valor 100% reembolsável ao fechar plano de abertura",
+            "Análise de perfil e exposição fiscal atual",
+            "Indicação de jurisdição ideal",
+            "Mapa de próximos passos",
+            "Valor 100% revertido na abertura da estrutura",
         ],
         highlight: false,
         buttonText: "Contratar Agora",
     },
     {
-        name: "Estratégia Brasil",
-        subtitle: "MAIS VENDIDO",
+        name: "Estratégia Completa",
+        subtitle: "MAIS POPULAR",
         price: "US$ 149",
         amount: 14900,
         priceId: "price_1TF0TkGmjEN0TRBbCBr7bkEv",
-        description: "Sessão de 2h para elaborar estratégia de otimização tributária e proteção jurídica no Brasil.",
+        description: "Sessão de 2h cobrindo offshore e proteção patrimonial no Brasil — para quem quer uma visão 360 da sua estrutura.",
         features: [
-            "Planejamento Proteção Patrimonial no Brasil",
-            "Otimização fiscal nacional",
-            "Integração com offshore",
-            "Valor 100% reembolsável ao fechar plano de abertura",
+            "Planejamento offshore personalizado",
+            "Proteção patrimonial no Brasil",
+            "Otimização fiscal nacional e internacional",
+            "Integração holding + offshore",
+            "Valor 100% revertido na abertura da estrutura",
         ],
         highlight: true,
         buttonText: "Contratar Agora",
     },
     {
-        name: "Consultoria Estratégica Holding",
+        name: "Holding + Sucessório",
         subtitle: "PREMIUM",
-        price: "US$ 125",
-        amount: 12500,
+        price: "US$ 199",
+        amount: 19900,
         priceId: "price_1TF0SqGmjEN0TRBbDFn1z7Wb",
-        description: "Sessão exclusiva de 60 minutos com especialista para análise inicial do patrimônio e identificação das melhores estratégias de estruturação.",
+        description: "Sessão de 90 minutos com foco em estruturação de holding familiar, proteção de ativos e planejamento sucessório.",
         features: [
-            "Análise inicial do patrimônio",
-            "Identificação de estratégias de estruturação",
-            "Planejamento sucessório e proteção de ativos",
-            "Valor 100% reembolsável ao fechar plano de abertura",
+            "Estruturação de holding familiar",
+            "Planejamento sucessório completo",
+            "Blindagem patrimonial avançada",
+            "Integração com estrutura offshore",
+            "Valor 100% revertido na abertura da estrutura",
         ],
         highlight: false,
         buttonText: "Contratar Agora",
@@ -115,7 +102,7 @@ export function PricingSection() {
                     </p>
                 </ScrollAnimation>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {plans.map((plan, index) => (
                         <ScrollAnimation key={index} delay={index * 100}>
                             <div className={`relative flex flex-col h-full p-8 md:p-10 rounded-2xl border ${plan.highlight ? "border-white/20 bg-gradient-to-b from-[#141414] to-black shadow-2xl shadow-black" : "border-white/5 bg-[#0a0a0a]"} transition-all duration-300 hover:border-white/30 shadow-2xl shadow-black`}>
