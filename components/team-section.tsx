@@ -13,13 +13,6 @@ const team = [
     linkedin: "#",
   },
   {
-    name: "Fabiano",
-    role: "Especialista",
-    specialty: "Consultoria Internacional",
-    image: "/fabiano.jpg",
-    linkedin: "#",
-  },
-  {
     name: "Kaio",
     role: "Full-Stack Developer",
     specialty: "Tecnologia e Operações",
