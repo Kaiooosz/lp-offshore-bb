@@ -6,34 +6,34 @@ import { ShieldAlert, Globe2, Wallet2, FileLock2, Briefcase, LineChart } from "l
 const features = [
   {
     icon: ShieldAlert,
-    title: "Planejamento Proteção Patrimonial",
-    desc: "Separe seu patrimônio pessoal dos riscos empresariais. Uma parede legal contra processos, credores e instabilidades."
+    title: "Planejamento patrimonial",
+    desc: "Segregue patrimônio pessoal e riscos empresariais com estruturas lícitas e documentadas.",
   },
   {
     icon: Wallet2,
-    title: "Otimização Fiscal",
-    desc: "Aproveite jurisdições com impostos reduzidos ou zerados sobre ganhos de capital, dividendos e renda global."
+    title: "Eficiência fiscal",
+    desc: "Avalie jurisdições e regimes aplicáveis ao seu perfil, sempre com transparência fiscal e regulatória.",
   },
   {
     icon: Globe2,
-    title: "Diversificação Global",
-    desc: "Contas multimoedas nos maiores bancos do mundo e acesso a investimentos restritos ao mercado internacional."
+    title: "Diversificação global",
+    desc: "Acesse contas multimoedas, bancos internacionais e mercados fora do Brasil com planejamento operacional.",
   },
   {
     icon: FileLock2,
     title: "Confidencialidade",
-    desc: "Proteja sua identidade. Em jurisdições específicas, diretores e acionistas não constam em registros públicos (anonimato total)."
+    desc: "Busque maior privacidade societária conforme a jurisdição, os registros públicos e as regras de compliance aplicáveis.",
   },
   {
     icon: Briefcase,
-    title: "Planejamento Sucessório",
-    desc: "Evite inventários demorados e custos tributários altos na transferência de patrimônio para seus herdeiros através de Trusts ou Holdings."
+    title: "Planejamento sucessório",
+    desc: "Organize holdings, trusts ou estruturas equivalentes para reduzir atritos na transferência de patrimônio.",
   },
   {
     icon: LineChart,
-    title: "Expansão Operacional",
-    desc: "Contrate gateways de pagamentos globais, importe e exporte de forma eficiente utilizando hubs financeiros internacionais."
-  }
+    title: "Expansão operacional",
+    desc: "Estruture banking, gateways e hubs internacionais para receber, pagar e operar com mais previsibilidade.",
+  },
 ]
 
 export function ObjectionsSection() {
@@ -48,7 +48,7 @@ export function ObjectionsSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-12">
           {features.map((item, index) => (
-            <ScrollAnimation key={index} delay={index * 100}>
+            <ScrollAnimation key={item.title} delay={index * 100}>
               <div className="flex flex-col items-start text-left h-full pb-8 border-b border-white/10 group">
                 <div className="w-12 h-12 rounded-full bg-[#0a0a0a] flex items-center justify-center mb-8 border border-white/5 shadow-lg group-hover:border-white/20 transition-all duration-300">
                   <item.icon className="h-5 w-5 text-white/70" />

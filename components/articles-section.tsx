@@ -8,23 +8,23 @@ const articles = [
   {
     title: "Guia Completo: Como Funciona uma Holding Offshore",
     excerpt:
-      "Entenda passo a passo como estruturar uma holding internacional e quais são os principais benefícios para proteção patrimonial.",
+      "Entenda passo a passo como estruturar uma holding internacional e quais são os principais cuidados para proteção patrimonial.",
     image: "/modern-office-with-city-view-corporate-finance.jpg",
     readTime: "8 min",
     category: "Guia",
   },
   {
-    title: "CRS e FATCA: O que você precisa saber em 2024",
+    title: "CRS e FATCA: o que avaliar antes de estruturar no exterior",
     excerpt:
-      "As regulamentações internacionais de troca de informações fiscais e como elas impactam sua estrutura offshore.",
+      "Como as regras de troca de informações fiscais impactam bancos, documentação e transparência em estruturas internacionais.",
     image: "/international-finance-documents-global-business.jpg",
     readTime: "6 min",
-    category: "Regulamentação",
+    category: "Regulação",
   },
   {
-    title: "As Melhores Jurisdições para Offshore em 2024",
+    title: "Como escolher a jurisdição offshore adequada ao seu perfil",
     excerpt:
-      "Análise comparativa das principais jurisdições, suas vantagens, custos e adequação para diferentes perfis de investidor.",
+      "Análise comparativa de jurisdições, custos, banking e adequação para operação, investimento e patrimônio.",
     image: "/world-map-with-financial-centers-global.jpg",
     readTime: "10 min",
     category: "Análise",
@@ -46,16 +46,16 @@ export function ArticlesSection() {
             Artigos e Insights
           </h2>
           <p className="text-sm md:text-lg text-white/40 max-w-2xl mx-auto font-light leading-relaxed">
-            Conteúdo educativo e atualizado sobre estruturação internacional e proteção patrimonial.
+            Conteúdo educativo sobre estruturação internacional, banking, compliance e proteção patrimonial.
           </p>
         </ScrollAnimation>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {articles.map((article, index) => (
-            <ScrollAnimation key={index} delay={index * 150}>
+            <ScrollAnimation key={article.title} delay={index * 150}>
               <Link href="https://www.bezerraborges.com.br/artigos" target="_blank" rel="noopener noreferrer" className="group block h-full transition-transform hover:-translate-y-1">
                 <article className="h-full flex flex-col border-b border-white/10 pb-8 group hover:border-white/30 transition-all duration-500">
-                  <div className="relative aspect-video overflow-hidden rounded-2xl mb-8 border border-white/5 group-hover:border-white/20 transition-all">
+                  <div className="relative aspect-video overflow-hidden rounded-lg mb-8 border border-white/5 group-hover:border-white/20 transition-all">
                     <img
                       src={article.image || "/placeholder.svg"}
                       alt={article.title}
@@ -66,21 +66,21 @@ export function ArticlesSection() {
                       {article.category}
                     </span>
                   </div>
-                  
+
                   <div className="flex-1 flex flex-col items-start px-2">
                     <div className="flex items-center gap-2 text-white/40 text-[10px] uppercase tracking-widest font-light mb-4">
                       <Clock className="h-3 w-3" />
                       <span>{article.readTime} de leitura</span>
                     </div>
-                    
+
                     <h3 className="font-light text-lg md:text-xl mb-4 group-hover:text-white/80 transition-colors tracking-tight leading-snug text-transparent bg-clip-text bg-gradient-to-br from-white via-white/80 to-white/20">
                       {article.title}
                     </h3>
-                    
+
                     <p className="text-white/40 text-[13px] md:text-sm font-light leading-relaxed mb-8 flex-1">
                       {article.excerpt}
                     </p>
-                    
+
                     <span className="inline-flex items-center text-[10px] font-light uppercase tracking-[0.2em] text-white/50 group-hover:text-white transition-colors gap-2 mt-auto">
                       Ler artigo
                       <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
@@ -109,4 +109,3 @@ export function ArticlesSection() {
     </section>
   )
 }
-

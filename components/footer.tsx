@@ -9,22 +9,24 @@ const socialLinks = [
 
 const footerLinks = {
   servicos: [
-    { label: "Estruturação Offshore", href: "#" },
-    { label: "Proteção Patrimonial", href: "#" },
-    { label: "Planejamento Tributário", href: "#" },
-    { label: "Planejamento Sucessório", href: "#" },
+    { label: "Estruturação Offshore", href: "#consultoria" },
+    { label: "Planejamento Patrimonial", href: "#beneficios" },
+    { label: "Diagnóstico Offshore", href: "#diagnostico-offshore" },
+    { label: "Jurisdições", href: "#jurisdicoes-grade" },
   ],
   recursos: [
     { label: "Artigos", href: "#artigos" },
-    { label: "Curadoria", href: "#" },
-    { label: "Webinars", href: "#" },
-    { label: "E-books", href: "#" },
+    { label: "FAQ", href: "#faq" },
+    { label: "Cases anonimizados", href: "#depoimentos" },
   ],
   empresa: [
-    { label: "Sobre nós", href: "#equipe" },
     { label: "Equipe", href: "#equipe" },
-    { label: "Contato", href: "https://api.whatsapp.com/send/?phone=5521979901686&text=Ol%C3%A1%2C+gostaria+de+agendar+um+diagn%C3%B3stico+estrat%C3%A9gico+com+a+Bezerra+Borges+Advogados", external: true },
-    { label: "", href: "https://www.bezerraborges.com.br", external: true },
+    {
+      label: "Contato",
+      href: "https://api.whatsapp.com/send/?phone=5521979901686&text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20diagn%C3%B3stico%20offshore%20com%20a%20Bezerra%20Borges%20Advogados",
+      external: true,
+    },
+    { label: "Site institucional", href: "https://www.bezerraborges.com.br", external: true },
   ],
 }
 
@@ -33,7 +35,6 @@ export function Footer() {
     <footer className="bg-black text-white border-t border-white/10">
       <div className="container mx-auto px-6 max-w-7xl py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12">
-          {/* Brand */}
           <div className="lg:col-span-2 space-y-6">
             <Link href="/" className="inline-block">
               <img
@@ -43,12 +44,12 @@ export function Footer() {
               />
             </Link>
             <p className="text-white/40 leading-relaxed max-w-xs font-light tracking-wide text-sm">
-              Especialistas em estruturação offshore para proteção patrimonial e expansão financeira global.
+              Estruturação internacional lícita, personalizada e defensável para patrimônio, operação e recebimentos globais.
             </p>
             <div className="flex items-center gap-4 pt-4">
-              {socialLinks.map((social, index) => (
+              {socialLinks.map((social) => (
                 <Link
-                  key={index}
+                  key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -61,12 +62,11 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Links */}
           <div>
             <h3 className="text-xs font-bold text-white/50 uppercase tracking-widest mb-6">Serviços</h3>
             <ul className="space-y-4">
-              {footerLinks.servicos.map((link, index) => (
-                <li key={index}>
+              {footerLinks.servicos.map((link) => (
+                <li key={link.label}>
                   <Link
                     href={link.href}
                     className="text-white/70 hover:text-white transition-colors text-sm font-light"
@@ -81,8 +81,8 @@ export function Footer() {
           <div>
             <h3 className="text-xs font-bold text-white/50 uppercase tracking-widest mb-6">Recursos</h3>
             <ul className="space-y-4">
-              {footerLinks.recursos.map((link, index) => (
-                <li key={index}>
+              {footerLinks.recursos.map((link) => (
+                <li key={link.label}>
                   <Link
                     href={link.href}
                     className="text-white/70 hover:text-white transition-colors text-sm font-light"
@@ -97,8 +97,8 @@ export function Footer() {
           <div>
             <h3 className="text-xs font-bold text-white/50 uppercase tracking-widest mb-6">Empresa</h3>
             <ul className="space-y-4">
-              {footerLinks.empresa.map((link, index) => (
-                <li key={index}>
+              {footerLinks.empresa.map((link) => (
+                <li key={link.label}>
                   <Link
                     href={link.href}
                     target={link.external ? "_blank" : undefined}
@@ -114,7 +114,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom */}
         <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-xs text-white/40 tracking-widest uppercase">
             © {new Date().getFullYear()} BORGES BEZERRA OFFSHORE. Todos os direitos reservados.

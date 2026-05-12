@@ -1,58 +1,109 @@
 "use client"
 
-import { useState } from "react"
+import { useState, type ChangeEvent, type FormEvent } from "react"
 import { ScrollAnimation } from "@/components/scroll-animation"
 import { ArrowRight, MessageCircle, CheckCircle, Loader2 } from "lucide-react"
 
-const STRIPE_PRODUCT_ID = "prod_UQt5dYJOG1ANiX"
-
 const WHATSAPP_URL =
-  "https://api.whatsapp.com/send/?phone=5521979901686&text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20estruturação%20offshore%20com%20a%20Bezerra%20Borges%20Advogados"
+  "https://api.whatsapp.com/send/?phone=5521979901686&text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20diagn%C3%B3stico%20offshore%20com%20a%20Bezerra%20Borges%20Advogados"
 
 const BENEFICIOS = [
-  "Análise do seu perfil patrimonial",
-  "Identificação da jurisdição ideal",
-  "Estratégias de proteção de ativos",
-  "Acesso direto a sócios especialistas",
+  "Triagem por objetivo, patrimônio e operação",
+  "Indicação inicial de jurisdições compatíveis",
+  "Mapeamento de riscos fiscais, bancários e societários",
+  "Encaminhamento para consulta, diagnóstico pago ou estruturação",
 ]
 
 const PATRIMONIO_OPTIONS = [
   "Até R$ 500 mil",
-  "R$ 500 mil – R$ 2 milhões",
-  "R$ 2 milhões – R$ 10 milhões",
+  "R$ 500 mil a R$ 2 milhões",
+  "R$ 2 milhões a R$ 10 milhões",
   "Acima de R$ 10 milhões",
 ]
 
+const OBJETIVO_OPTIONS = [
+  "Receber do exterior",
+  "Proteger patrimônio",
+  "Investir internacionalmente",
+  "Abrir operação fora do Brasil",
+  "Regularizar ou revisar estrutura existente",
+]
+
+const RECEITA_OPTIONS = [
+  "Ainda não recebo do exterior",
+  "Até US$ 10 mil/mês",
+  "US$ 10 mil a US$ 50 mil/mês",
+  "US$ 50 mil a US$ 100 mil/mês",
+  "Acima de US$ 100 mil/mês",
+]
+
+const RISCO_OPTIONS = [
+  "Não tenho risco relevante no momento",
+  "Tenho dívida ou passivo empresarial",
+  "Tenho processo em andamento",
+  "Atuo em setor com risco operacional elevado",
+  "Prefiro explicar em contato reservado",
+]
+
+const BANKING_OPTIONS = [
+  "Preciso de conta bancária",
+  "Preciso de gateway de pagamento",
+  "Preciso dos dois",
+  "Já tenho banking/gateway",
+  "Ainda não sei",
+]
+
+const ESTRUTURA_OPTIONS = [
+  "Estrutura simples para operação",
+  "Estrutura patrimonial ou holding",
+  "Estrutura com sócios",
+  "Revisão de estrutura existente",
+  "Quero indicação do especialista",
+]
+
+const CONVERSION_STAGES = [
+  { label: "WhatsApp", detail: "triagem rápida e urgência operacional" },
+  { label: "Formulário", detail: "lead qualificado por objetivo e capacidade" },
+  { label: "Consulta paga", detail: "dúvida jurídica ou tributária específica" },
+  { label: "Diagnóstico pago", detail: "mapa de estrutura, risco e jurisdição" },
+  { label: "Fechamento", detail: "abertura, revisão ou estruturação completa" },
+]
+
+type LeadForm = {
+  nome: string
+  email: string
+  telefone: string
+  objetivo: string
+  patrimonio: string
+  receitaInternacional: string
+  riscoEmpresarial: string
+  precisaBanking: string
+  tipoEstrutura: string
+  mensagem: string
+}
+
+const INITIAL_FORM: LeadForm = {
+  nome: "",
+  email: "",
+  telefone: "",
+  objetivo: "",
+  patrimonio: "",
+  receitaInternacional: "",
+  riscoEmpresarial: "",
+  precisaBanking: "",
+  tipoEstrutura: "",
+  mensagem: "",
+}
+
 export function ContactSection() {
-  const [form, setForm] = useState({ nome: "", email: "", telefone: "", patrimonio: "", mensagem: "" })
+  const [form, setForm] = useState<LeadForm>(INITIAL_FORM)
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
-  const [checkoutLoading, setCheckoutLoading] = useState(false)
-  const [checkoutError, setCheckoutError] = useState<string | null>(null)
 
-  async function handleCheckout() {
-    setCheckoutLoading(true)
-    setCheckoutError(null)
-    try {
-      const res = await fetch("/api/stripe/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ priceId: STRIPE_PRODUCT_ID }),
-      })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error || "Erro ao iniciar pagamento")
-      if (data.url) window.location.href = data.url
-    } catch (err: any) {
-      setCheckoutError(err.message)
-    } finally {
-      setCheckoutLoading(false)
-    }
-  }
-
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
+  function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault()
     setStatus("loading")
     try {
@@ -63,7 +114,7 @@ export function ContactSection() {
       })
       if (!res.ok) throw new Error()
       setStatus("success")
-      setForm({ nome: "", email: "", telefone: "", patrimonio: "", mensagem: "" })
+      setForm(INITIAL_FORM)
     } catch {
       setStatus("error")
     }
@@ -75,70 +126,65 @@ export function ContactSection() {
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050505] to-transparent pointer-events-none" />
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        {/* Header */}
         <ScrollAnimation animation="fade-in" className="text-center mb-16">
           <span className="text-[10px] font-light text-white/40 uppercase tracking-[0.25em] mb-4 block">
-            Contato
+            Diagnóstico
           </span>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tighter uppercase leading-tight text-transparent bg-clip-text bg-gradient-to-br from-white via-white/80 to-white/20">
-            PRONTO PARA estruturar<br className="hidden sm:block" /> seu OFFSHORE?
+            Diagnóstico Offshore<br className="hidden sm:block" /> em 2 minutos
           </h2>
           <p className="mt-6 text-base text-white/40 font-light max-w-xl mx-auto leading-relaxed">
-            Agende uma consultoria estratégica e descubra como estruturar seu patrimônio internacionalmente com segurança jurídica.
+            Responda algumas perguntas objetivas para nossa equipe indicar a estrutura mais adequada ao seu perfil.
           </p>
         </ScrollAnimation>
 
         <div className="grid lg:grid-cols-2 gap-10 items-start">
-
-          {/* Left – Consultation Card */}
           <ScrollAnimation animation="slide-left">
             <div className="border border-white/10 bg-white/[0.03] p-8 md:p-10 flex flex-col gap-6">
               <div>
                 <span className="inline-block text-[9px] font-light tracking-[0.25em] uppercase border border-white/20 text-white/60 px-3 py-1 mb-6">
-                  Agendamento Imediato
+                  Qualificação Premium
                 </span>
                 <h3 className="text-2xl md:text-3xl font-light text-white tracking-tight mb-3">
-                  Consultoria Estratégica Offshore
+                  Estruturação internacional lícita, personalizada e defensável
                 </h3>
                 <p className="text-sm text-white/50 font-light leading-relaxed">
-                  Sessão exclusiva de 60 minutos com um de nossos especialistas para análise do seu contexto patrimonial e identificação das melhores jurisdições e estruturas.
+                  O diagnóstico inicial separa curiosidade de demanda real e orienta o próximo passo:
+                  WhatsApp, formulário, consulta paga, diagnóstico pago ou fechamento de estruturação.
                 </p>
               </div>
 
               <ul className="flex flex-col gap-3">
-                {BENEFICIOS.map((b) => (
-                  <li key={b} className="flex items-center gap-3 text-sm font-light text-white/60">
+                {BENEFICIOS.map((beneficio) => (
+                  <li key={beneficio} className="flex items-center gap-3 text-sm font-light text-white/60">
                     <CheckCircle className="h-4 w-4 text-white/30 shrink-0" />
-                    {b}
+                    {beneficio}
                   </li>
                 ))}
               </ul>
 
               <div className="border-t border-white/10 pt-6">
-                <p className="text-[10px] font-light text-white/40 uppercase tracking-[0.2em] mb-1">Investimento</p>
-                <p className="text-4xl font-light text-white tracking-tight">
-                  USD 125 <span className="text-base text-white/40">/ sessão</span>
+                <p className="text-[10px] font-light text-white/40 uppercase tracking-[0.2em] mb-4">
+                  Conversões por qualidade
                 </p>
+                <div className="grid gap-2">
+                  {CONVERSION_STAGES.map((stage) => (
+                    <div key={stage.label} className="grid grid-cols-[110px_1fr] gap-3 border border-white/10 bg-black/40 px-4 py-3">
+                      <p className="text-[10px] text-white/70 uppercase tracking-[0.18em] font-light">{stage.label}</p>
+                      <p className="text-xs text-white/40 font-light leading-relaxed">{stage.detail}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <div className="flex flex-col gap-2">
-                <button
-                  onClick={handleCheckout}
-                  disabled={checkoutLoading}
-                  className="group flex items-center justify-center gap-3 w-full bg-white text-black py-4 px-6 text-[11px] font-light uppercase tracking-[0.2em] hover:bg-white/90 transition-colors disabled:opacity-60"
+                <a
+                  href="#diagnostico-offshore"
+                  className="group flex items-center justify-center gap-3 w-full bg-white text-black py-4 px-6 text-[11px] font-light uppercase tracking-[0.2em] hover:bg-white/90 transition-colors"
                 >
-                  {checkoutLoading ? (
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                  ) : (
-                    <>
-                      Contratar Consultoria
-                      <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
-                    </>
-                  )}
-                </button>
-                {checkoutError && (
-                  <p className="text-xs text-red-400/70 font-light text-center">{checkoutError}</p>
-                )}
+                  Preencher Diagnóstico
+                  <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                </a>
                 <a
                   href={WHATSAPP_URL}
                   target="_blank"
@@ -163,19 +209,18 @@ export function ContactSection() {
             </div>
           </ScrollAnimation>
 
-          {/* Right – Lead Form */}
           <ScrollAnimation animation="slide-right">
-            <div className="border border-white/10 bg-white/[0.03] p-8 md:p-10">
-              <h3 className="text-xl font-light text-white tracking-tight mb-2">Deixe seu contato</h3>
+            <div className="border border-white/10 bg-white/[0.03] p-8 md:p-10" id="diagnostico-offshore">
+              <h3 className="text-xl font-light text-white tracking-tight mb-2">Quiz de qualificação</h3>
               <p className="text-sm text-white/40 font-light mb-8">
-                Nossa equipe entra em contato com a solução ideal para o seu caso.
+                Com base nas respostas, um especialista indica a estrutura mais adequada ao seu caso.
               </p>
 
               {status === "success" ? (
                 <div className="flex flex-col items-center justify-center gap-4 py-12 text-center">
                   <CheckCircle className="h-10 w-10 text-white/50" />
-                  <p className="text-lg font-light text-white">Recebemos seu contato!</p>
-                  <p className="text-sm text-white/40 font-light">Nossa equipe retornará em breve.</p>
+                  <p className="text-lg font-light text-white">Recebemos seu diagnóstico.</p>
+                  <p className="text-sm text-white/40 font-light">Nossa equipe retornará em breve com o próximo passo recomendado.</p>
                   <a
                     href={WHATSAPP_URL}
                     target="_blank"
@@ -234,31 +279,123 @@ export function ContactSection() {
 
                   <div className="flex flex-col gap-1.5">
                     <label className="text-[9px] font-light uppercase tracking-[0.2em] text-white/40">
-                      Volume Patrimonial
+                      Objetivo principal *
                     </label>
                     <select
-                      name="patrimonio"
-                      value={form.patrimonio}
+                      name="objetivo"
+                      value={form.objetivo}
                       onChange={handleChange}
+                      required
                       className="bg-black border border-white/10 px-4 py-3 text-sm font-light text-white/70 focus:outline-none focus:border-white/30 transition-colors appearance-none"
                     >
-                      <option value="" className="bg-black">Selecione uma faixa</option>
-                      {PATRIMONIO_OPTIONS.map((o) => (
-                        <option key={o} value={o} className="bg-black">{o}</option>
+                      <option value="" className="bg-black">Selecione o objetivo</option>
+                      {OBJETIVO_OPTIONS.map((option) => (
+                        <option key={option} value={option} className="bg-black">{option}</option>
                       ))}
                     </select>
                   </div>
 
                   <div className="flex flex-col gap-1.5">
                     <label className="text-[9px] font-light uppercase tracking-[0.2em] text-white/40">
-                      Seu Caso
+                      Patrimônio aproximado *
+                    </label>
+                    <select
+                      name="patrimonio"
+                      value={form.patrimonio}
+                      onChange={handleChange}
+                      required
+                      className="bg-black border border-white/10 px-4 py-3 text-sm font-light text-white/70 focus:outline-none focus:border-white/30 transition-colors appearance-none"
+                    >
+                      <option value="" className="bg-black">Selecione uma faixa</option>
+                      {PATRIMONIO_OPTIONS.map((option) => (
+                        <option key={option} value={option} className="bg-black">{option}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[9px] font-light uppercase tracking-[0.2em] text-white/40">
+                      Receita mensal internacional *
+                    </label>
+                    <select
+                      name="receitaInternacional"
+                      value={form.receitaInternacional}
+                      onChange={handleChange}
+                      required
+                      className="bg-black border border-white/10 px-4 py-3 text-sm font-light text-white/70 focus:outline-none focus:border-white/30 transition-colors appearance-none"
+                    >
+                      <option value="" className="bg-black">Selecione uma faixa</option>
+                      {RECEITA_OPTIONS.map((option) => (
+                        <option key={option} value={option} className="bg-black">{option}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-[9px] font-light uppercase tracking-[0.2em] text-white/40">
+                        Risco, dívida ou processo? *
+                      </label>
+                      <select
+                        name="riscoEmpresarial"
+                        value={form.riscoEmpresarial}
+                        onChange={handleChange}
+                        required
+                        className="bg-black border border-white/10 px-4 py-3 text-sm font-light text-white/70 focus:outline-none focus:border-white/30 transition-colors appearance-none"
+                      >
+                        <option value="" className="bg-black">Selecione</option>
+                        {RISCO_OPTIONS.map((option) => (
+                          <option key={option} value={option} className="bg-black">{option}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-[9px] font-light uppercase tracking-[0.2em] text-white/40">
+                        Banking ou gateway? *
+                      </label>
+                      <select
+                        name="precisaBanking"
+                        value={form.precisaBanking}
+                        onChange={handleChange}
+                        required
+                        className="bg-black border border-white/10 px-4 py-3 text-sm font-light text-white/70 focus:outline-none focus:border-white/30 transition-colors appearance-none"
+                      >
+                        <option value="" className="bg-black">Selecione</option>
+                        {BANKING_OPTIONS.map((option) => (
+                          <option key={option} value={option} className="bg-black">{option}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[9px] font-light uppercase tracking-[0.2em] text-white/40">
+                      Tipo de estrutura desejada *
+                    </label>
+                    <select
+                      name="tipoEstrutura"
+                      value={form.tipoEstrutura}
+                      onChange={handleChange}
+                      required
+                      className="bg-black border border-white/10 px-4 py-3 text-sm font-light text-white/70 focus:outline-none focus:border-white/30 transition-colors appearance-none"
+                    >
+                      <option value="" className="bg-black">Selecione o perfil</option>
+                      {ESTRUTURA_OPTIONS.map((option) => (
+                        <option key={option} value={option} className="bg-black">{option}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[9px] font-light uppercase tracking-[0.2em] text-white/40">
+                      Contexto adicional
                     </label>
                     <textarea
                       name="mensagem"
                       value={form.mensagem}
                       onChange={handleChange}
                       rows={4}
-                      placeholder="Conte sobre seus objetivos e como podemos ajudar..."
+                      placeholder="Conte detalhes importantes sobre operação, patrimônio, sócios, urgência ou documentação..."
                       className="bg-transparent border border-white/10 px-4 py-3 text-sm font-light text-white placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors resize-none"
                     />
                   </div>
@@ -279,7 +416,7 @@ export function ContactSection() {
                         <Loader2 className="h-3.5 w-3.5 animate-spin" />
                       ) : (
                         <>
-                          Enviar Mensagem
+                          Enviar Diagnóstico
                           <ArrowRight className="h-3 w-3" />
                         </>
                       )}
@@ -292,7 +429,7 @@ export function ContactSection() {
                       className="flex items-center justify-center gap-2 border border-white/20 text-white py-4 text-[10px] font-light uppercase tracking-[0.2em] hover:bg-white/5 transition-colors"
                     >
                       <MessageCircle className="h-3.5 w-3.5" />
-                      WhatsApp Direto
+                      WhatsApp
                     </a>
                   </div>
 
@@ -303,7 +440,6 @@ export function ContactSection() {
               )}
             </div>
           </ScrollAnimation>
-
         </div>
       </div>
     </section>
