@@ -7,40 +7,19 @@ import { Menu, X } from "lucide-react"
 
 const navLinks = [
   { href: "#beneficios", label: "Benefícios" },
-  { href: "#processo", label: "Processo" },
   { href: "#jurisdicoes-grade", label: "Jurisdições" },
   { href: "#consultoria", label: "Consultoria" },
   { href: "#equipe", label: "Equipe" },
-  { href: "https://api.whatsapp.com/send/?phone=5521979901686&text=Olá, gostaria de agendar um diagnóstico estratégico com a Bezerra Borges Advogados", label: "Contato" },
+  { href: "#diagnostico-offshore", label: "Diagnóstico" },
 ]
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [loading, setLoading] = useState(false)
 
-  const handleConsultationCheckout = async () => {
-    try {
-      setLoading(true)
-      const response = await fetch("/api/stripe/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          amount: 2000,
-          name: "Consulta com Contador - BBLAW",
-          priceId: "price_1TAElnFsbLGLnQ7wjhz7dkYI",
-        }),
-      })
-
-      const { url, error } = await response.json()
-      if (error) throw new Error(error)
-      if (url) window.location.href = url
-    } catch (error) {
-      console.error("Header checkout error:", error)
-      alert("Erro ao iniciar agendamento. Tente novamente.")
-    } finally {
-      setLoading(false)
-    }
+  const handleStart = () => {
+    const section = document.getElementById("diagnostico-offshore")
+    if (section) section.scrollIntoView({ behavior: "smooth" })
   }
 
   useEffect(() => {
@@ -57,8 +36,6 @@ export function Header() {
     >
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="flex items-center justify-between">
-          
-          {/* Logo */}
           <div className="w-1/4">
             <Link href="/" className="inline-block">
               <img
@@ -69,7 +46,6 @@ export function Header() {
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center justify-center gap-10 w-2/4">
             {navLinks.map((link) => (
               <Link
@@ -82,28 +58,24 @@ export function Header() {
             ))}
           </nav>
 
-          {/* CTA Button */}
           <div className="hidden lg:flex items-center justify-end w-1/4">
             <Button
               className="btn-shimmer bg-transparent text-white hover:bg-white hover:text-black rounded-full px-6 py-2 h-auto text-[10px] font-light tracking-[0.2em] transition-all border border-white/30"
-              onClick={handleConsultationCheckout}
-              disabled={loading}
+              onClick={handleStart}
             >
-              {loading ? "AGUARDE..." : "INICIAR AGORA"}
+              INICIAR AGORA
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden p-2 text-white"
-            aria-label="Toggle menu"
+            aria-label="Alternar menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="lg:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10 py-6 px-6">
             <nav className="flex flex-col gap-6">
@@ -120,10 +92,12 @@ export function Header() {
               <div className="pt-6 border-t border-white/10">
                 <Button
                   className="w-full bg-white text-black rounded-full h-12 text-sm font-medium tracking-widest"
-                  onClick={handleConsultationCheckout}
-                  disabled={loading}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false)
+                    handleStart()
+                  }}
                 >
-                  {loading ? "PROCESSANDO..." : "INICIAR AGORA"}
+                  INICIAR DIAGNÓSTICO
                 </Button>
               </div>
             </nav>
