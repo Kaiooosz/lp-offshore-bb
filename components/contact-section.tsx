@@ -2,19 +2,10 @@
 
 import { useState } from "react"
 import { ScrollAnimation } from "@/components/scroll-animation"
-import { ArrowRight, MessageCircle, CheckCircle, Loader2 } from "lucide-react"
-
-const STRIPE_PRODUCT_ID = "prod_UQt5dYJOG1ANiX"
+import { ArrowRight, MessageCircle, CheckCircle, Loader2, Phone, Mail } from "lucide-react"
 
 const WHATSAPP_URL =
   "https://api.whatsapp.com/send/?phone=5521979901686&text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20estruturação%20offshore%20com%20a%20Bezerra%20Borges%20Advogados"
-
-const BENEFICIOS = [
-  "Análise do seu perfil patrimonial",
-  "Identificação da jurisdição ideal",
-  "Estratégias de proteção de ativos",
-  "Acesso direto a sócios especialistas",
-]
 
 const PATRIMONIO_OPTIONS = [
   "Até R$ 500 mil",
@@ -26,27 +17,6 @@ const PATRIMONIO_OPTIONS = [
 export function ContactSection() {
   const [form, setForm] = useState({ nome: "", email: "", telefone: "", patrimonio: "", mensagem: "" })
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
-  const [checkoutLoading, setCheckoutLoading] = useState(false)
-  const [checkoutError, setCheckoutError] = useState<string | null>(null)
-
-  async function handleCheckout() {
-    setCheckoutLoading(true)
-    setCheckoutError(null)
-    try {
-      const res = await fetch("/api/stripe/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ priceId: STRIPE_PRODUCT_ID }),
-      })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error || "Erro ao iniciar pagamento")
-      if (data.url) window.location.href = data.url
-    } catch (err: any) {
-      setCheckoutError(err.message)
-    } finally {
-      setCheckoutLoading(false)
-    }
-  }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -84,81 +54,67 @@ export function ContactSection() {
             PRONTO PARA estruturar<br className="hidden sm:block" /> seu OFFSHORE?
           </h2>
           <p className="mt-6 text-base text-white/40 font-light max-w-xl mx-auto leading-relaxed">
-            Agende uma consultoria estratégica e descubra como estruturar seu patrimônio internacionalmente com segurança jurídica.
+            Deixe seu contato ou fale diretamente com a equipe. Retornamos com a análise mais adequada para o seu perfil.
           </p>
         </ScrollAnimation>
 
         <div className="grid lg:grid-cols-2 gap-10 items-start">
 
-          {/* Left – Consultation Card */}
+          {/* Left – CTA + Contacts */}
           <ScrollAnimation animation="slide-left">
-            <div className="border border-white/10 bg-white/[0.03] p-8 md:p-10 flex flex-col gap-6">
+            <div className="border border-white/10 bg-white/[0.03] p-8 md:p-10 flex flex-col gap-8 h-full">
               <div>
                 <span className="inline-block text-[9px] font-light tracking-[0.25em] uppercase border border-white/20 text-white/60 px-3 py-1 mb-6">
-                  Agendamento Imediato
+                  Fale com um Especialista
                 </span>
-                <h3 className="text-2xl md:text-3xl font-light text-white tracking-tight mb-3">
-                  Consultoria Estratégica Offshore
+                <h3 className="text-2xl md:text-3xl font-light text-white tracking-tight mb-4">
+                  Estruturação internacional lícita, personalizada e defensável.
                 </h3>
                 <p className="text-sm text-white/50 font-light leading-relaxed">
-                  Sessão exclusiva de 60 minutos com um de nossos especialistas para análise do seu contexto patrimonial e identificação das melhores jurisdições e estruturas.
+                  Nossa equipe analisa seu perfil patrimonial e indica a estrutura mais adequada — considerando seus objetivos, obrigações fiscais brasileiras e compliance regulatório.
                 </p>
               </div>
 
-              <ul className="flex flex-col gap-3">
-                {BENEFICIOS.map((b) => (
-                  <li key={b} className="flex items-center gap-3 text-sm font-light text-white/60">
-                    <CheckCircle className="h-4 w-4 text-white/30 shrink-0" />
-                    {b}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="border-t border-white/10 pt-6">
-                <p className="text-[10px] font-light text-white/40 uppercase tracking-[0.2em] mb-1">Investimento</p>
-                <p className="text-4xl font-light text-white tracking-tight">
-                  USD 125 <span className="text-base text-white/40">/ sessão</span>
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <button
-                  onClick={handleCheckout}
-                  disabled={checkoutLoading}
-                  className="group flex items-center justify-center gap-3 w-full bg-white text-black py-4 px-6 text-[11px] font-light uppercase tracking-[0.2em] hover:bg-white/90 transition-colors disabled:opacity-60"
-                >
-                  {checkoutLoading ? (
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                  ) : (
-                    <>
-                      Contratar Consultoria
-                      <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
-                    </>
-                  )}
-                </button>
-                {checkoutError && (
-                  <p className="text-xs text-red-400/70 font-light text-center">{checkoutError}</p>
-                )}
+              <div className="flex flex-col gap-3">
                 <a
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex items-center justify-center gap-3 w-full border border-white/20 text-white py-4 px-6 text-[11px] font-light uppercase tracking-[0.2em] hover:bg-white/5 transition-colors"
+                  className="group flex items-center justify-center gap-3 w-full bg-white text-black py-4 px-6 text-[11px] font-light uppercase tracking-[0.2em] hover:bg-white/90 transition-colors"
                 >
                   <MessageCircle className="h-4 w-4" />
-                  Agendar via WhatsApp
+                  Falar no WhatsApp
+                  <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
 
-              <div className="grid grid-cols-2 gap-px border border-white/10 bg-white/10">
-                <div className="bg-black px-4 py-3">
-                  <p className="text-[9px] font-light text-white/30 uppercase tracking-[0.15em] mb-1">WhatsApp</p>
-                  <p className="text-xs font-light text-white/70">+55 21 97990-1686</p>
+              <div className="border-t border-white/10 pt-6 space-y-4">
+                <div className="flex items-center gap-3">
+                  <Phone className="h-4 w-4 text-white/30 shrink-0" />
+                  <div>
+                    <p className="text-[9px] font-light text-white/30 uppercase tracking-[0.15em] mb-0.5">WhatsApp</p>
+                    <p className="text-sm font-light text-white/70">+55 21 97990-1686</p>
+                  </div>
                 </div>
-                <div className="bg-black px-4 py-3">
-                  <p className="text-[9px] font-light text-white/30 uppercase tracking-[0.15em] mb-1">E-mail</p>
-                  <p className="text-xs font-light text-white/70">contato@bezerraborges.com.br</p>
+                <div className="flex items-center gap-3">
+                  <Mail className="h-4 w-4 text-white/30 shrink-0" />
+                  <div>
+                    <p className="text-[9px] font-light text-white/30 uppercase tracking-[0.15em] mb-0.5">E-mail</p>
+                    <p className="text-sm font-light text-white/70">contato@bezerraborges.com.br</p>
+                  </div>
                 </div>
+              </div>
+
+              <div className="mt-auto grid grid-cols-2 gap-6 pt-6 border-t border-white/10">
+                {[
+                  { value: "500+", label: "Estruturas assessoradas" },
+                  { value: "15+", label: "Jurisdições atendidas" },
+                ].map((s) => (
+                  <div key={s.label}>
+                    <p className="text-2xl font-light text-white tracking-tighter mb-1">{s.value}</p>
+                    <p className="text-[10px] text-white/30 uppercase tracking-wider font-light">{s.label}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </ScrollAnimation>

@@ -52,7 +52,7 @@ export function HeroSection() {
 
         {/* Subtitle */}
         <p className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000 delay-200 text-lg md:text-xl text-white/40 max-w-2xl text-center mb-12 leading-relaxed tracking-wide font-light">
-          Para empresários com faturamento acima de R$ 500 mil/ano ou patrimônio investível no exterior — estruturamos a blindagem jurídica e tributária que protege o que voce construiu.
+          Para empresários com faturamento acima de R$ 500 mil/ano ou patrimônio investível no exterior — estruturamos a proteção jurídica e tributária que preserva o que você construiu.
         </p>
 
         {/* CTA */}
@@ -71,8 +71,8 @@ export function HeroSection() {
           {[
             { tag: "JURISDIÇÕES", value: "15+" },
             { tag: "ESTRUTURAS", value: "500+" },
-            { tag: "PROTEÇÃO", value: "MÁXIMA" },
-            { tag: "COMPLIANCE", value: "100%" }
+            { tag: "PROTEÇÃO", value: "AVANÇADA" },
+            { tag: "COMPLIANCE", value: "ORIENTADO" }
           ].map((stat, i) => (
              <div key={i} className="text-center animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000" style={{ transitionDelay: `${i * 100 + 400}ms` }}>
                 <p className="text-[10px] sm:text-xs text-white/40 tracking-[0.2em] font-light mb-2 uppercase">{stat.tag}</p>

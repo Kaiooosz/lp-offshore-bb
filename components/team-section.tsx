@@ -124,7 +124,7 @@ export function TeamSection() {
                 REFERÊNCIA EM ESTRUTURAÇÃO GLOBAL
               </h3>
               <p className="text-white/50 text-lg md:text-xl font-light leading-relaxed mb-16 text-center max-w-3xl mx-auto">
-                Assessoramos centenas de famílias e empresas na internacionalização de capitais, sendo referência absoluta no mercado em conformidade legal e agilidade operacional.
+                Assessoramos centenas de famílias e empresas na internacionalização de capitais, sendo referência reconhecida no mercado em conformidade legal e agilidade operacional.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 text-center pt-16">
@@ -138,7 +138,7 @@ export function TeamSection() {
                 </div>
                 <div>
                   <span className="block text-5xl md:text-6xl font-light text-white mb-4 tracking-tighter">100%</span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-white/40 font-bold">Compliance Legal</span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-white/40 font-bold">Estruturas em Conformidade</span>
                 </div>
               </div>
             </div>

@@ -10,6 +10,7 @@ import { TeamSection } from "@/components/team-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { ArticlesSection } from "@/components/articles-section"
 import { FAQ } from "@/components/faq"
+import { QuizSection } from "@/components/quiz-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 
@@ -28,6 +29,7 @@ export default function OffshoreLandingPage() {
       <TestimonialsSection />
       <ArticlesSection />
       <FAQ />
+      <QuizSection />
       <ContactSection />
       <Footer />
     </main>

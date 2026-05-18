@@ -6,25 +6,25 @@ import { Quote, Star } from "lucide-react"
 const testimonials = [
   {
     content:
-      "A estruturação offshore transformou completamente a gestão do meu patrimônio. A equipe foi excepcional em cada etapa do processo, sempre com total transparência.",
-    author: "Carlos M.",
-    role: "Empresário",
+      "Case anonimizado — Empresário digital, receita recorrente em USD. Estruturamos LLC em Wyoming + banking internacional + orientação fiscal para a Lei 14.754/2023. Resultado: segregação de receitas, previsibilidade operacional e conformidade total com o fisco brasileiro.",
+    author: "Empresário Digital",
+    role: "SaaS · Receita US$ 40k/mês",
     rating: 5,
     image: "/testimonial_carlos.png",
   },
   {
     content:
-      "Depois de anos procurando uma solução segura para internacionalizar meus investimentos, finalmente encontrei profissionais que entendem profundamente do assunto.",
-    author: "Patricia R.",
-    role: "Investidora",
+      "Case anonimizado — Médica com patrimônio investível no exterior. Diagnóstico patrimonial identificou exposição jurídica em duas frentes. Estruturamos holding nas Bahamas + orientação DCBE e DIRPF. Processo documentado, legal e com roadmap claro de obrigações acessórias.",
+    author: "Profissional Liberal",
+    role: "Medicina · Patrimônio R$ 3M+",
     rating: 5,
     image: "/testimonial_patricia.png",
   },
   {
     content:
-      "O planejamento sucessório que fizemos através da estrutura offshore trouxe tranquilidade para toda a família. Processo claro, legal e muito bem documentado.",
-    author: "Roberto S.",
-    role: "Médico",
+      "Case anonimizado — Empresário com operação em múltiplos países e risco trabalhista relevante no Brasil. Estruturação em Névis com separação patrimonial entre pessoa física e holding operacional. Suporte jurídico contínuo e documentação defensável.",
+    author: "Empresário",
+    role: "Comércio Internacional · 3 jurisdições",
     rating: 5,
     image: "/testimonial_roberto.png",
   },

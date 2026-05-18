@@ -39,8 +39,8 @@ const faqs = [
     answer: "Sim. Você pode utilizar cartões de débito internacionais da sua empresa para despesas correntes ou realizar transferências de dividendos para sua conta pessoal no Brasil, seguindo as regras de tributação vigentes.",
   },
   {
-    question: "É possível manter total anonimato ao abrir uma offshore?",
-    answer: "Sim, jurisdições como Wyoming e Névis permitem um altíssimo grau de privacidade através de diretores indicados ou simplesmente por não possuírem registros públicos de sócios. O anonimato é perante terceiros, mas a transparência com o fisco deve ser mantida.",
+    question: "É possível ter privacidade societária ao abrir uma offshore?",
+    answer: "Sim, jurisdições como Wyoming e Névis permitem um alto grau de privacidade através de diretores indicados ou por não possuírem registros públicos de sócios. Essa privacidade é perante terceiros; a transparência com o fisco brasileiro deve ser sempre mantida, conforme as obrigações da Lei 14.754/2023 e normas do Banco Central.",
   },
   {
     question: "Como ficam os impostos no Brasil se eu for residente fiscal e tiver uma offshore?",
@@ -48,7 +48,7 @@ const faqs = [
   },
   {
     question: "Qual a diferença prática entre abrir nos EUA, Nevis, Dubai e Bahamas?",
-    answer: "EUA é ideal para baixo custo e serviços digitais. Névis é o 'padrão ouro' de proteção jurídica. Dubai é excelente para quem busca isenção total e substância física. Bahamas é perfeita para holdings familiares de longo prazo.",
+    answer: "EUA é ideal para baixo custo e serviços digitais. Névis é referência em proteção jurídica e segregação patrimonial. Dubai é excelente para quem busca eficiência tributária com substância física real. Bahamas é muito indicada para holdings familiares e planejamento sucessório de longo prazo.",
   },
 ];
 

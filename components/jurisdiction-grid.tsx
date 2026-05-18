@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
 
 const allJurisdictions = [
-    { name: "Wyoming", country: "EUA", status: "Operacional", description: "O mais recomendado para empresários brasileiros, pois garante altíssimo grau de anonimato e baixíssima burocracia anual.", price: "990 USD", amount: 99000, priceId: "price_1TF0fvGmjEN0TRBb9tXpPiUs" },
+    { name: "Wyoming", country: "EUA", status: "Operacional", description: "O mais recomendado para empresários brasileiros, com alto grau de privacidade societária e baixíssima burocracia anual.", price: "990 USD", amount: 99000, priceId: "price_1TF0fvGmjEN0TRBb9tXpPiUs" },
     { name: "Delaware", country: "EUA", status: "Status", description: "O mais recomendado para empresas que buscam investimento de VCs e forte segurança jurídica.", price: "990 USD", amount: 99000, priceId: "price_1TF0fUGmjEN0TRBb5VRVQQTe" },
     { name: "Novo México", country: "EUA", status: "Operacional", description: "Jurisdição alternativa à Wyoming.", price: "990 USD", amount: 99000, priceId: "price_1TF0f3GmjEN0TRBbXxI4SW0e" },
-    { name: "Névis", country: "São Cristóvão e Névis", status: "Anonimato", description: "Ideal para quem busca máxima proteção jurídica, anonimato e proteção de ativos para blindagem contra credores.", price: "2.900 USD", amount: 290000, priceId: "price_1TF0eMGmjEN0TRBbAp1DyNuX" },
+    { name: "Névis", country: "São Cristóvão e Névis", status: "Proteção", description: "Ideal para quem busca robusta proteção jurídica, segregação patrimonial e redução de exposição a credores.", price: "2.900 USD", amount: 290000, priceId: "price_1TF0eMGmjEN0TRBbAp1DyNuX" },
     { name: "Bahamas", country: "Bahamas", status: "Holding", description: "Ideal para holdings patrimoniais e empresas com múltiplos sócios ou acionistas.", price: "2.900 USD", amount: 290000, priceId: "price_1TF0djGmjEN0TRBbVTqgmq9P" },
     { name: "Panamá", country: "Panamá", status: "Comércio", description: "Hub logístico e financeiro estratégico para operações e negócios globais.", price: "2.900 USD", amount: 290000, priceId: "price_1TF0cSGmjEN0TRBbfpDVNpUF" },
     { name: "BVI", country: "Ilhas Virgens Britânicas", status: "Holdings", description: "Uma das jurisdições mais populares do mundo para holdings, fundos e estruturas.", price: "3.500 USD", amount: 350000, priceId: "price_1TF0bsGmjEN0TRBbHMkz1Drm" },

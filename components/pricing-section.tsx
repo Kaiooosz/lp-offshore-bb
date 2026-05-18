@@ -269,31 +269,6 @@ export function PricingSection() {
                     </div>
                 </ScrollAnimation>
 
-                {/* Funil visual */}
-                <ScrollAnimation className="mt-16 pt-16 border-t border-white/8">
-                    <p className="text-[10px] text-white/30 uppercase tracking-[0.2em] mb-6">Progressão natural do funil</p>
-                    <div className="flex flex-wrap items-center gap-3">
-                        {[
-                            { label: "Consultas", value: "US$ 150–250" },
-                            { label: "Diagnosticos", value: "US$ 450–880" },
-                            { label: "Otimizacao", value: "US$ 1.600 + Garantia" },
-                            { label: "Estruturacao / Abertura", value: "US$ 990–6.500" },
-                        ].map((step, i, arr) => (
-                            <div key={i} className="flex items-center gap-3">
-                                <div className="px-5 py-3 rounded-xl border border-white/10 bg-white/4">
-                                    <p className="text-[10px] text-white/40 uppercase tracking-wider font-light">{step.label}</p>
-                                    <p className="text-xs text-white/70 font-light mt-0.5">{step.value}</p>
-                                </div>
-                                {i < arr.length - 1 && (
-                                    <span className="text-white/20 text-sm">&#8594;</span>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                    <p className="text-xs text-white/30 font-light mt-4 leading-relaxed max-w-xl">
-                        Cada camada empurra naturalmente para a proxima. A consulta de US$ 150 e a porta — a abertura de US$ 990+ e o destino.
-                    </p>
-                </ScrollAnimation>
 
             </div>
         </section>

@@ -5,8 +5,8 @@ import { ScrollAnimation } from "@/components/scroll-animation"
 const features = [
   {
     tag: "PROTEÇÃO",
-    title: "Blindagem Patrimonial",
-    desc: "Separe seu patrimônio pessoal dos riscos empresariais. Uma parede legal contra processos, credores e instabilidades.",
+    title: "Segregação Patrimonial",
+    desc: "Separe seu patrimônio pessoal dos riscos empresariais. Uma estrutura legal entre você e credores, processos e instabilidades.",
     image: "/international-finance-documents-global-business.jpg", 
     isLogoBackground: false,
     className: "md:col-span-2 aspect-[16/9] md:aspect-auto md:h-[400px]"
@@ -22,7 +22,7 @@ const features = [
   {
     tag: "OTIMIZAÇÃO",
     title: "Eficiência fiscal internacional",
-    desc: "Aproveite regimes tributários favoráveis e dobre a rentabilidade do seu negócio.",
+    desc: "Aproveite regimes tributários favoráveis para reduzir custos operacionais e aumentar a eficiência financeira do seu negócio.",
     image: "/LogoBranco.svg", 
     isLogoBackground: true,
     className: "md:col-span-1 aspect-square md:aspect-auto md:h-[400px]"
@@ -43,7 +43,7 @@ export function WhyOffshoreSection() {
       <div className="container mx-auto px-6 max-w-7xl">
         <ScrollAnimation className="mb-20">
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-light text-white tracking-tighter uppercase mb-6 leading-none max-w-4xl">
-            BLINDAGEM COMPLETA PARA UM MUNDO SEM FRONTEIRAS
+            PROTEÇÃO ESTRATÉGICA PARA UM MUNDO SEM FRONTEIRAS
           </h2>
         </ScrollAnimation>
 

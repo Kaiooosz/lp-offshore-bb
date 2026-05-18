@@ -22,7 +22,7 @@ const features = [
   {
     icon: FileLock2,
     title: "Confidencialidade",
-    desc: "Proteja sua identidade. Em jurisdições específicas, diretores e acionistas não constam em registros públicos (anonimato total)."
+    desc: "Proteja sua identidade. Em jurisdições específicas, diretores e acionistas não constam em registros públicos, assegurando maior privacidade societária conforme as regras de compliance aplicáveis."
   },
   {
     icon: Briefcase,
